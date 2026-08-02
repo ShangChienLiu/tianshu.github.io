@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>天樞文理補習班｜北斗七星文教</title>
-  <style>
+  <style id="__bundler_loader_styles">
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { background: #f6f3ec; min-height: 100vh; font-family: -apple-system, BlinkMacSystemFont, "Noto Sans TC", sans-serif; }
     #__bundler_thumbnail {
@@ -451,13 +451,14 @@ document.addEventListener('DOMContentLoaded', async function() {
     // preserve ordering (React before ReactDOM before Babel before text/babel).
     const doc = new DOMParser().parseFromString(template, 'text/html');
     const splash = document.getElementById('__bundler_thumbnail');
+    const loaderStyles = document.getElementById('__bundler_loader_styles');
+
+    // Keep the loader mounted above the real page while the new document and
+    // its scripts are installed. Fading it before replaceWith() briefly
+    // exposed the old empty body, which looked like a second flash on mobile.
     if (splash) {
-      const remainingLoaderTime = Math.max(0, 1400 - (performance.now() - loaderStartedAt));
-      if (remainingLoaderTime) {
-        await new Promise(function(resolve) { setTimeout(resolve, remainingLoaderTime); });
-      }
-      splash.classList.add('__bundler_ready');
-      await new Promise(function(resolve) { setTimeout(resolve, 360); });
+      if (loaderStyles) doc.head.appendChild(loaderStyles);
+      doc.body.appendChild(splash);
     }
     document.documentElement.replaceWith(doc.documentElement);
 
@@ -508,6 +509,22 @@ document.addEventListener('DOMContentLoaded', async function() {
     // which fired before we swapped the document. Trigger manually if present.
     if (window.Babel && typeof window.Babel.transformScriptTags === 'function') {
       window.Babel.transformScriptTags();
+    }
+
+    if (splash) {
+      // Give the installed page two paint opportunities before revealing it,
+      // then perform one continuous fade from loader to ready content.
+      await new Promise(function(resolve) {
+        requestAnimationFrame(function() { requestAnimationFrame(resolve); });
+      });
+      const remainingLoaderTime = Math.max(0, 1400 - (performance.now() - loaderStartedAt));
+      if (remainingLoaderTime) {
+        await new Promise(function(resolve) { setTimeout(resolve, remainingLoaderTime); });
+      }
+      splash.classList.add('__bundler_ready');
+      await new Promise(function(resolve) { setTimeout(resolve, 400); });
+      splash.remove();
+      if (loaderStyles) loaderStyles.remove();
     }
   } catch (err) {
     setStatus('Error unpacking: ' + err.message);
