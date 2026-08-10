@@ -4,8 +4,9 @@ const { chromium } = require('playwright')
 
 const executablePath = '/Users/shangchienliu/Library/Caches/ms-playwright/chromium_headless_shell-1223/chrome-headless-shell-mac-arm64/chrome-headless-shell'
 
-async function inspectMenu (page, url, headerSelector, desktopSelector, mobileSelector) {
+async function inspectMenu (page, url, headerSelector, desktopSelector, mobileSelector, interactiveRoot) {
   await page.goto(url, { waitUntil: 'domcontentloaded' })
+  if (interactiveRoot) await page.waitForSelector(interactiveRoot)
   const closed = await page.evaluate(({ headerSelector, desktopSelector, mobileSelector }) => {
     const header = document.querySelector(headerSelector)
     const desktop = document.querySelector(desktopSelector)
@@ -38,7 +39,9 @@ async function inspectMenu (page, url, headerSelector, desktopSelector, mobileSe
     const rect = element.getBoundingClientRect()
     return { width: rect.width, height: rect.height }
   })
-  return { ...closed, trigger, menu }
+  await page.mouse.click(8, 400)
+  const closesOnOutsideClick = await page.locator(mobileSelector).evaluate(element => !element.open)
+  return { ...closed, trigger, menu, closesOnOutsideClick }
 }
 
 function assertMenu (name, result) {
@@ -57,6 +60,9 @@ function assertMenu (name, result) {
   if (result.menu.targets.some(target => target.height < 44)) {
     throw new Error(`${name} menu contains a touch target smaller than 44px`)
   }
+  if (!result.closesOnOutsideClick) {
+    throw new Error(`${name} menu stays open after clicking outside it`)
+  }
 }
 
 async function main () {
@@ -64,7 +70,7 @@ async function main () {
   const context = await browser.newContext({ viewport: { width: 390, height: 844 } })
   const page = await context.newPage()
 
-  const home = await inspectMenu(page, 'http://127.0.0.1:4180/', 'header', '.om-nav', '.om-mobile-menu')
+  const home = await inspectMenu(page, 'http://127.0.0.1:4180/', 'header', '.om-nav', '.om-mobile-menu', '#dc-root')
   const vispo = await inspectMenu(page, 'http://127.0.0.1:4180/vispo/', '.site-header', '.nav', '.mobile-menu')
   const cta = await page.locator('.mobile-cta').evaluate(element => {
     const rect = element.getBoundingClientRect()
