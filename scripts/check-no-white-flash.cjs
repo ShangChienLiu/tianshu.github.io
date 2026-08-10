@@ -13,7 +13,7 @@ async function main () {
 
   // Model a LINE WebView where HTML paints before the deferred local runtime,
   // then the external React dependencies arrive later still.
-  await page.route('http://127.0.0.1:4180/assets/dc-runtime.js', async route => {
+  await page.route('http://127.0.0.1:4180/assets/dc-runtime.js*', async route => {
     await new Promise(resolve => setTimeout(resolve, 500))
     await route.continue()
   })
