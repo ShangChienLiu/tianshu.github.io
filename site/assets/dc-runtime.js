@@ -165,7 +165,6 @@
     const dc = doc.querySelector("x-dc");
     const hostEl = doc.createElement("div");
     hostEl.id = "dc-root";
-    dc.replaceWith(hostEl);
     if (!parsed.preview) {
       const s = doc.createElement("style");
       s.textContent = FULL_PAGE_CSS;
@@ -175,6 +174,12 @@
     const entry = runtime.registry.get(rootName);
     function StandaloneRoot() {
       const [, setTick] = React.useState(0);
+      React.useLayoutEffect(() => {
+        // Keep the server-rendered page visible while React prepares the
+        // interactive tree. Replacing it only after the first commit avoids a
+        // white frame in slower in-app browsers such as LINE's WebView.
+        if (dc.isConnected) dc.replaceWith(hostEl);
+      }, []);
       React.useEffect(() => {
         const sub = () => setTick((n) => n + 1);
         entry.subs.add(sub);
@@ -1815,11 +1820,6 @@
   }
 
   // src/index.ts
-  function hideRawTemplate() {
-    const s = document.createElement("style");
-    s.textContent = "x-dc{display:none!important}";
-    document.head.appendChild(s);
-  }
   function loadScript(src, integrity) {
     return new Promise((resolve2, reject) => {
       //! nosemgrep: create-script-element
@@ -1903,7 +1903,6 @@
     if (document.readyState !== "loading") api.__dcBoot();
     else document.addEventListener("DOMContentLoaded", () => api.__dcBoot());
   }
-  hideRawTemplate();
   loadReactUmd().then(init).catch((err) => {
     console.error("[dc] failed to load React or boot:", err);
     throw err;
