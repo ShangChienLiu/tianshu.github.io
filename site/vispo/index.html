@@ -96,6 +96,15 @@
     .nav .active { color: var(--ink); background: var(--gold-soft); border: 1px solid rgba(165,107,0,.28); }
     .nav .contact { margin-left: 6px; color: #fff; background: var(--ink); }
     .nav .contact:hover { color: #fff; background: var(--ink-2); }
+    .mobile-menu { display: none; position: relative; margin-left: auto; background: transparent; border: 0; }
+    .mobile-menu > summary { display: grid; place-items: center; width: 48px; height: 48px; padding: 0; list-style: none; color: var(--ink); background: #fff; border: 1.5px solid var(--ink); cursor: pointer; }
+    .mobile-menu > summary::-webkit-details-marker { display: none; }
+    .mobile-menu > summary::after { content: none; }
+    .mobile-menu[open] > summary { color: #fff; background: var(--ink); }
+    .mobile-menu-panel { position: absolute; top: calc(100% + 10px); right: 0; width: min(300px,calc(100vw - 32px)); padding: 8px; background: #fff; border: 1.5px solid var(--ink); box-shadow: 0 18px 42px rgba(6,27,63,.22); }
+    .mobile-menu-panel a { display: flex; align-items: center; min-height: 48px; padding: 0 14px; border-bottom: 1px solid var(--line); color: var(--ink); font-size: 15px; font-weight: 750; }
+    .mobile-menu-panel a[aria-current="page"] { background: var(--gold-soft); }
+    .mobile-menu-panel .contact { justify-content: center; margin: 8px 0 0; border-bottom: 0; color: #fff; background: var(--ink); }
 
     .hero {
       position: relative;
@@ -250,10 +259,9 @@
 
     .mobile-cta { display: none; }
     @media (max-width: 900px) {
-      .nav-wrap { min-height: auto; padding-block: 10px 8px; flex-wrap: wrap; }
-      .nav { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); width: 100%; margin-left: 0; gap: 6px; overflow: visible; }
-      .nav a { display: flex; justify-content: center; align-items: center; min-width: 0; padding: 9px 6px; text-align: center; }
-      .nav .contact { grid-column: span 2; margin-left: 0; }
+      .nav-wrap { min-height: 68px; padding-block: 10px; flex-wrap: nowrap; }
+      .nav { display: none; }
+      .mobile-menu { display: block; }
       .hero-grid, .section-head, .event-layout, .perspective-grid { grid-template-columns: 1fr; }
       .hero-grid { padding-top: 58px; }
       .poster-card { width: min(680px,100%); margin-inline: auto; transform: none; }
@@ -316,6 +324,18 @@
         <a href="/?page=team">師資團隊</a>
         <a class="contact" href="https://line.me/R/ti/p/@713tsrkw" rel="noopener">聯絡我們</a>
       </nav>
+      <details class="mobile-menu">
+        <summary aria-label="開啟主要選單">
+          <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </summary>
+        <nav class="mobile-menu-panel" aria-label="手機版主要導覽">
+          <a href="/">首頁</a>
+          <a href="/vispo/" aria-current="page">Vispo 數學</a>
+          <a href="/?page=story">品牌故事</a>
+          <a href="/?page=team">師資團隊</a>
+          <a class="contact" href="https://line.me/R/ti/p/@713tsrkw" rel="noopener">聯絡我們</a>
+        </nav>
+      </details>
     </div>
   </header>
 
