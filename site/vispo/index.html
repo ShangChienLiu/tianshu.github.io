@@ -251,10 +251,9 @@
     .mobile-cta { display: none; }
     @media (max-width: 900px) {
       .nav-wrap { min-height: auto; padding-block: 10px 8px; flex-wrap: wrap; }
-      .nav { width: 100%; margin-left: 0; overflow-x: auto; scrollbar-width: none; }
-      .nav::-webkit-scrollbar { display: none; }
-      .nav a { padding: 9px 11px; }
-      .nav .contact { margin-left: 0; }
+      .nav { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); width: 100%; margin-left: 0; gap: 6px; overflow: visible; }
+      .nav a { display: flex; justify-content: center; align-items: center; min-width: 0; padding: 9px 6px; text-align: center; }
+      .nav .contact { grid-column: span 2; margin-left: 0; }
       .hero-grid, .section-head, .event-layout, .perspective-grid { grid-template-columns: 1fr; }
       .hero-grid { padding-top: 58px; }
       .poster-card { width: min(680px,100%); margin-inline: auto; transform: none; }
@@ -287,8 +286,8 @@
       .perspective-item .icon { width: 42px; height: 42px; }
       .footer-grid { grid-template-columns: 1fr; padding-bottom: 100px; }
       .footer-links { justify-content: flex-start; }
-      .mobile-cta { position: fixed; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom)); left: 12px; z-index: 1200; display: flex; justify-content: space-between; align-items: center; gap: 12px; min-height: 62px; padding: 12px 18px; color: var(--ink); background: var(--gold); border: 1px solid rgba(6,27,63,.3); box-shadow: 0 16px 42px rgba(6,27,63,.3); font-size: 15px; font-weight: 900; }
-      .mobile-cta small { display: block; font-size: 10px; font-weight: 700; opacity: .65; }
+      .mobile-cta { position: fixed; right: 14px; bottom: calc(14px + env(safe-area-inset-bottom)); left: auto; z-index: 1200; display: grid; place-items: center; width: 64px; height: 64px; padding: 0; color: var(--ink); background: var(--gold); border: 1px solid rgba(6,27,63,.3); border-radius: 50%; box-shadow: 0 10px 26px rgba(6,27,63,.28); font-size: 13px; font-weight: 950; line-height: 1.15; text-align: center; }
+      .mobile-cta:active { transform: scale(.96); }
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
@@ -481,6 +480,6 @@
     </div>
   </footer>
 
-  <a class="mobile-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSco_Bos2-FoMEIEFAEwkIOnAsqikhyFoQ6ao7CxkFLI4wKk0Q/viewform?usp=dialog" target="_blank" rel="noopener"><span>8/29 體驗診斷日<small>每場限額 10 名</small></span><strong>立即報名 ↗</strong></a>
+  <a class="mobile-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSco_Bos2-FoMEIEFAEwkIOnAsqikhyFoQ6ao7CxkFLI4wKk0Q/viewform?usp=dialog" target="_blank" rel="noopener" aria-label="立即報名 8/29 體驗診斷日"><span>立即<br>報名</span></a>
 </body>
 </html>
