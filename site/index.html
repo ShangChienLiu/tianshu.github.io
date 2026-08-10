@@ -313,14 +313,17 @@ textarea.input { min-height: 90px; resize: vertical; }
     .om-head-inner { padding:10px 16px !important; gap:10px !important; row-gap:8px !important; }
     .om-brand img { height:36px !important; width:36px !important; }
     .om-brand-name { font-size:15px !important; }
-    .om-nav { width:100%; margin-left:0 !important; flex-wrap:nowrap !important; overflow-x:auto; gap:0 !important; scrollbar-width:none; -webkit-overflow-scrolling:touch; }
-    .om-nav::-webkit-scrollbar { display:none; }
-    .om-nav button, .om-nav > a { font-size:14px !important; padding:10px 12px !important; white-space:nowrap; }
-    .om-nav button:last-child { margin-left:auto !important; padding:10px 16px !important; }
+    .om-nav { display:grid !important; grid-template-columns:repeat(3,minmax(0,1fr)); width:100%; margin-left:0 !important; gap:6px !important; overflow:visible; }
+    .om-nav button, .om-nav > a { width:100%; min-width:0; justify-content:center; text-align:center; font-size:14px !important; padding:10px 6px !important; white-space:nowrap; }
+    .om-nav button:last-child { grid-column:span 2; margin-left:0 !important; padding:10px 8px !important; }
     .om-hero-h1 { font-size:31px !important; letter-spacing:-0.01em !important; }
     .om-cta-row { gap:10px !important; margin-top:28px !important; }
     .om-cta-row > a, .om-cta-row > button { flex:1 1 100% !important; justify-content:space-between !important; padding:15px 20px !important; font-size:16px !important; }
     .om-fab-stack { right:14px !important; bottom:calc(14px + env(safe-area-inset-bottom)) !important; gap:10px !important; }
+  }
+  @media (max-width:360px) {
+    .om-vispo-nav span { display:none; }
+    .om-nav button, .om-nav > a { font-size:13px !important; }
   }
 </style>
 </helmet>
