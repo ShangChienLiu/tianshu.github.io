@@ -71,6 +71,23 @@ async function main () {
   const page = await context.newPage()
 
   const home = await inspectMenu(page, 'http://127.0.0.1:4180/', 'header', '.om-nav', '.om-mobile-menu', '#dc-root')
+  const promo = await page.evaluate(() => {
+    const card = document.querySelector('.om-vispo-promo-mobile')
+    if (!card) return { display: 'missing' }
+    const nowrapItems = [...card.querySelectorAll('[data-nowrap]')].map(item => ({
+      text: item.textContent.trim(),
+      clientWidth: item.clientWidth,
+      scrollWidth: item.scrollWidth,
+      whiteSpace: getComputedStyle(item).whiteSpace
+    }))
+    return {
+      display: getComputedStyle(card).display,
+      clientWidth: card.clientWidth,
+      scrollWidth: card.scrollWidth,
+      height: card.getBoundingClientRect().height,
+      nowrapItems
+    }
+  })
   const vispo = await inspectMenu(page, 'http://127.0.0.1:4180/vispo/', '.site-header', '.nav', '.mobile-menu')
   const cta = await page.locator('.mobile-cta').evaluate(element => {
     const rect = element.getBoundingClientRect()
@@ -79,11 +96,21 @@ async function main () {
   await browser.close()
 
   console.log(`home_mobile_menu=${JSON.stringify(home)}`)
+  console.log(`home_vispo_promo=${JSON.stringify(promo)}`)
   console.log(`vispo_mobile_menu=${JSON.stringify(vispo)}`)
   console.log(`vispo_mobile_cta=${JSON.stringify(cta)}`)
 
   assertMenu('home', home)
   assertMenu('vispo', vispo)
+  if (promo.display === 'missing' || promo.display === 'none') {
+    throw new Error('homepage does not provide a dedicated mobile Vispo promo')
+  }
+  if (promo.scrollWidth > promo.clientWidth + 1 || promo.height > 104) {
+    throw new Error('homepage mobile Vispo promo overflows or is too tall')
+  }
+  if (promo.nowrapItems.some(item => item.whiteSpace !== 'nowrap' || item.scrollWidth > item.clientWidth + 1)) {
+    throw new Error('homepage mobile Vispo promo contains wrapped or clipped text')
+  }
   if (cta.width > 72 || cta.height > 72 || Math.abs(cta.width - cta.height) > 1 || cta.rightGap < 8 || cta.rightGap > 24) {
     throw new Error('Vispo mobile CTA is not a compact lower-right circle')
   }
