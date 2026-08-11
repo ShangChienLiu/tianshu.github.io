@@ -80,11 +80,11 @@
     .brand-copy small { color: var(--muted); font-size: 9px; letter-spacing: .16em; text-transform: uppercase; }
     .brand-copy strong { font-size: 15px; }
     .nav { display: flex; align-items: center; gap: 2px; margin-left: auto; }
-    .nav a { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 9px 10px; white-space: nowrap; font-size: 13px; font-weight: 760; }
+    .nav a { box-sizing: border-box; display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 9px 10px; border: 1px solid transparent; white-space: nowrap; font-size: 13px; font-weight: 760; }
     .nav a:hover { color: var(--wood); }
     .nav .active { color: var(--white); background: var(--wood); }
     .nav .course-link { position: relative; }
-    .nav .course-badge { position: absolute; top: -8px; right: 6px; padding: 2px 5px; color: #fff; font-size: 9px; line-height: 1.2; letter-spacing: .08em; }
+    .nav .course-badge { position: absolute; top: -8px; right: 6px; box-sizing: border-box; min-width: 33px; height: 16px; min-height: 16px; display: inline-flex; align-items: center; justify-content: center; padding: 0 5px; color: #fff; font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; font-size: 9px; font-weight: 900; line-height: 1; letter-spacing: .08em; }
     .nav .new-badge { background: #1268ac; }
     .nav .hot-badge { background: var(--hot); }
     .nav .contact { margin-left: 5px; color: #fff; background: var(--ink); }
@@ -314,10 +314,6 @@
 <body>
   <a class="skip-link" href="#main">跳至主要內容</a>
 
-  <div class="announcement">
-    <div class="shell"><span class="hot-badge">HOT</span><strong>人氣課程</strong> Win珠心算・開放程度諮詢 <span>幼兒園至國小｜小班指導</span></div>
-  </div>
-
   <header class="site-header">
     <div class="shell nav-wrap">
       <a class="brand" href="/" aria-label="返回天樞文理補習班首頁">
@@ -348,6 +344,10 @@
       </details>
     </div>
   </header>
+
+  <div class="announcement">
+    <div class="shell"><span class="hot-badge">HOT</span><strong>人氣課程</strong> Win珠心算・開放程度諮詢 <span>幼兒園至國小｜小班指導</span></div>
+  </div>
 
   <main id="main">
     <section class="win-hero hero">
@@ -518,7 +518,7 @@
             <div class="kicker" style="color:#ffd47d">Start At The Right Level</div>
             <h2><span class="headline-line" data-keep-line>每個孩子，</span><span class="headline-line" data-keep-line>都從適合自己的</span><span class="headline-line" data-keep-line>程度開始</span></h2>
             <p>無論第一次接觸算盤，或曾經學過珠心算，老師都會先了解目前程度，再安排適合的教材與進度。</p>
-            <div class="fit-meta"><span>幼兒園至國小</span><span>新竹關埔校區</span><span>天樞短期文理補習班</span></div>
+            <div class="fit-meta"><span>幼兒園至國小</span><span>新竹校區</span><span>天樞短期文理補習班</span></div>
           </div>
           <a class="fit-action" href="https://line.me/R/ti/p/@713tsrkw" rel="noopener">詢問適合的程度 ↗<span>LINE @713tsrkw</span></a>
         </div>
@@ -528,7 +528,7 @@
 
   <footer>
     <div class="shell footer-grid">
-      <div class="footer-brand"><img src="/android-chrome-192x192.png" alt=""><span>Win珠心算｜珠算・無珠心算<br>關埔天樞短期文理補習班</span></div>
+      <div class="footer-brand"><img src="/android-chrome-192x192.png" alt=""><span>Win珠心算｜珠算・無珠心算<br>天樞短期文理補習班</span></div>
       <div class="footer-links"><a href="tel:036661668">03 666 1668</a><a href="https://line.me/R/ti/p/@713tsrkw" rel="noopener">LINE @713tsrkw</a><span>新竹市長春街 140 號 1-2 樓</span></div>
     </div>
     <div class="shell site-copyright">© 2026 北斗七星文教｜天樞文理補習班</div>
