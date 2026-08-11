@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Win 珠心｜珠算・無珠心算｜天樞文理補習班</title>
+  <meta name="description" content="Win 珠心以系統化珠算、無珠心算、分級練習與小班指導，陪孩子從看得見的算珠建立計算基本功、專注與學習自信。幼兒園至國小適用。">
+  <meta name="theme-color" content="#192019">
+  <link rel="canonical" href="https://skybookedu.com/win/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:site_name" content="天樞文理補習班｜北斗七星文教">
+  <meta property="og:title" content="Win 珠心｜一盤珠，練的不只是計算">
+  <meta property="og:description" content="系統化珠算｜無珠心算｜分級練習｜小班指導。從手上有珠，走向心中有珠。">
+  <meta property="og:url" content="https://skybookedu.com/win/">
+  <meta property="og:image" content="https://skybookedu.com/win/assets/win-group-1920.webp">
+  <meta property="og:image:width" content="1920">
+  <meta property="og:image:height" content="1440">
+  <meta property="og:image:alt" content="Win 珠心學生展示算盤與學習成果">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Win 珠心｜一盤珠，練的不只是計算">
+  <meta name="twitter:description" content="從實珠到心算，讓計算更穩，也讓孩子看見自己的進步。">
+  <meta name="twitter:image" content="https://skybookedu.com/win/assets/win-group-1920.webp">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <style>
+    :root {
+      --ink: #192019;
+      --ink-soft: #273229;
+      --paper: #f3efe4;
+      --paper-deep: #e9e0ce;
+      --white: #fffdf7;
+      --wood: #8b4225;
+      --amber: #e9a52d;
+      --amber-pale: #f8e6b3;
+      --sage: #667768;
+      --hot: #d7462f;
+      --muted: #625f56;
+      --line: rgba(25,32,25,.2);
+      --shadow: 0 22px 64px rgba(35,28,18,.16);
+      --max: 1180px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", "PingFang TC", sans-serif;
+      font-size: 16px;
+      line-height: 1.72;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    :focus-visible { outline: 3px solid var(--amber); outline-offset: 4px; }
+    ::selection { color: var(--white); background: var(--wood); }
+    .skip-link { position: fixed; left: 16px; top: -80px; z-index: 9999; padding: 10px 16px; color: var(--white); background: var(--ink); font-weight: 850; }
+    .skip-link:focus { top: 16px; }
+    .shell { width: min(calc(100% - 40px), var(--max)); margin-inline: auto; }
+
+    .announcement { color: #fff; background: var(--ink); border-bottom: 1px solid rgba(255,255,255,.13); }
+    .announcement .shell { min-height: 38px; display: flex; align-items: center; justify-content: center; gap: 10px; text-align: center; font-size: 12px; font-weight: 800; letter-spacing: .05em; }
+    .announcement strong { color: #ffd47d; }
+    .announcement span { opacity: .7; }
+    .hot-badge { display: inline-flex; align-items: center; justify-content: center; min-height: 22px; padding: 2px 7px; color: #fff; background: var(--hot); font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; font-size: 10px; font-weight: 900; line-height: 1; letter-spacing: .12em; }
+
+    .site-header { position: sticky; top: 0; z-index: 1000; color: var(--ink); background: rgba(243,239,228,.92); border-bottom: 1px solid var(--line); backdrop-filter: blur(16px); }
+    .nav-wrap { min-height: 76px; display: flex; align-items: center; gap: 20px; }
+    .brand { display: flex; align-items: center; gap: 12px; flex: 0 0 auto; font-weight: 850; }
+    .brand img { width: 44px; height: 44px; object-fit: contain; }
+    .brand-divider { width: 1px; height: 30px; background: var(--line); }
+    .brand-copy { display: grid; line-height: 1.18; }
+    .brand-copy small { color: var(--muted); font-size: 9px; letter-spacing: .16em; text-transform: uppercase; }
+    .brand-copy strong { font-size: 15px; }
+    .nav { display: flex; align-items: center; gap: 2px; margin-left: auto; }
+    .nav a { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 9px 10px; white-space: nowrap; font-size: 13px; font-weight: 760; }
+    .nav a:hover { color: var(--wood); }
+    .nav .active { color: var(--white); background: var(--wood); }
+    .nav .contact { margin-left: 5px; color: #fff; background: var(--ink); }
+    .nav .contact:hover { color: #fff; background: var(--ink-soft); }
+
+    .mobile-menu { display: none; position: relative; margin-left: auto; background: transparent; border: 0; }
+    .mobile-menu > summary { display: grid; place-items: center; width: 48px; height: 48px; padding: 0; list-style: none; color: var(--ink); background: var(--white); border: 1.5px solid var(--ink); cursor: pointer; }
+    .mobile-menu > summary::-webkit-details-marker { display: none; }
+    .mobile-menu > summary::after { content: none; }
+    .mobile-menu[open] > summary { color: #fff; background: var(--ink); }
+    .mobile-menu-panel { position: absolute; top: calc(100% + 10px); right: 0; width: min(300px,calc(100vw - 32px)); padding: 8px; background: var(--white); border: 1.5px solid var(--ink); box-shadow: 0 18px 42px rgba(25,32,25,.23); }
+    .mobile-menu-panel a { display: flex; align-items: center; justify-content: space-between; min-height: 48px; padding: 0 14px; border-bottom: 1px solid var(--line); color: var(--ink); font-size: 15px; font-weight: 760; }
+    .mobile-menu-panel a[aria-current="page"] { color: #fff; background: var(--wood); }
+    .mobile-menu-panel .contact { justify-content: center; margin-top: 8px; border-bottom: 0; color: #fff; background: var(--ink); }
+
+    .win-hero { position: relative; isolation: isolate; overflow: hidden; color: #fff; background: var(--ink); }
+    .win-hero::before { content: ""; position: absolute; inset: 0; z-index: -1; opacity: .14; background-image: repeating-linear-gradient(90deg, transparent 0 82px, rgba(255,255,255,.22) 82px 84px); }
+    .hero-grid { min-height: min(740px, calc(100svh - 114px)); display: grid; grid-template-columns: minmax(0,.9fr) minmax(440px,1.1fr); gap: clamp(36px,6vw,76px); align-items: center; padding-block: clamp(64px,8vw,108px); }
+    .hero-copy { position: relative; z-index: 2; }
+    .hero-label { display: flex; align-items: center; gap: 10px; color: #ffd47d; font-size: 12px; font-weight: 900; letter-spacing: .12em; }
+    .win-word { margin-top: 18px; font-family: Georgia, "Times New Roman", serif; font-size: clamp(58px,8vw,104px); font-style: italic; font-weight: 800; line-height: .88; letter-spacing: -.06em; }
+    .win-word span { color: var(--amber); font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; font-size: .21em; font-style: normal; letter-spacing: .08em; vertical-align: top; }
+    .hero h1 { margin: 28px 0 0; max-width: 7.8em; font-family: ui-serif, "Songti TC", "Noto Serif TC", serif; font-size: clamp(44px,5.5vw,70px); font-weight: 800; line-height: 1.1; letter-spacing: -.055em; text-wrap: balance; }
+    .hero-lead { margin: 24px 0 0; max-width: 34em; color: rgba(255,255,255,.72); font-size: clamp(16px,1.55vw,19px); line-height: 1.9; text-wrap: pretty; }
+    .hero-lead strong { color: #fff; }
+    .abacus-rule { width: min(420px,100%); display: grid; grid-template-columns: repeat(11,1fr); gap: 7px; align-items: center; margin-top: 30px; padding: 9px 12px; border-block: 3px solid rgba(255,255,255,.7); }
+    .abacus-rule i { display: block; aspect-ratio: 1.45; background: var(--amber); border-radius: 50%; transform: translateX(var(--shift,0)); box-shadow: inset -2px -2px 0 rgba(91,44,12,.3); }
+    .abacus-rule i:nth-child(2), .abacus-rule i:nth-child(6), .abacus-rule i:nth-child(9) { --shift: 7px; background: #d87535; }
+    .abacus-rule i:nth-child(4), .abacus-rule i:nth-child(7) { --shift: -5px; }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+    .btn { min-height: 56px; display: inline-flex; align-items: center; justify-content: center; gap: 12px; padding: 15px 22px; border: 1px solid transparent; font-size: 16px; font-weight: 900; transition: transform .18s ease, background .18s ease; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { color: var(--ink); background: var(--amber); box-shadow: 0 16px 38px rgba(233,165,45,.2); }
+    .btn-secondary { color: #fff; border-color: rgba(255,255,255,.4); background: rgba(255,255,255,.05); }
+    .btn-dark { color: #fff; background: var(--ink); }
+    .hero-note { margin: 17px 0 0; color: rgba(255,255,255,.54); font-size: 12px; }
+
+    .hero-photo { position: relative; align-self: stretch; min-height: 560px; margin-right: calc((100vw - min(calc(100vw - 40px), var(--max))) / -2); overflow: hidden; border-left: 1px solid rgba(255,255,255,.18); }
+    .hero-photo picture, .hero-photo img { width: 100%; height: 100%; }
+    .hero-photo img { object-fit: cover; object-position: 50% 48%; }
+    .hero-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg,var(--ink) 0%,transparent 18%), linear-gradient(0deg,rgba(25,32,25,.52),transparent 38%); pointer-events: none; }
+    .hero-caption { position: absolute; right: clamp(24px,5vw,68px); bottom: 28px; z-index: 2; max-width: 20em; padding: 14px 16px; color: #fff; background: rgba(25,32,25,.82); border-left: 4px solid var(--amber); font-size: 13px; font-weight: 760; backdrop-filter: blur(8px); }
+
+    .quick-facts { position: relative; z-index: 3; margin-top: -30px; }
+    .fact-grid { display: grid; grid-template-columns: repeat(4,1fr); background: var(--white); border: 1px solid var(--line); box-shadow: var(--shadow); }
+    .fact { min-height: 116px; padding: 24px clamp(18px,2.5vw,30px); border-right: 1px solid var(--line); }
+    .fact:last-child { border-right: 0; }
+    .fact small { display: block; color: var(--wood); font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; font-size: 10px; font-weight: 900; letter-spacing: .12em; }
+    .fact strong { display: block; margin-top: 7px; font-size: clamp(17px,1.8vw,23px); line-height: 1.35; }
+
+    .section { padding-block: clamp(72px,9vw,116px); }
+    .section-white { background: var(--white); border-block: 1px solid var(--line); }
+    .section-dark { color: #fff; background: var(--ink); }
+    .section-head { display: grid; grid-template-columns: minmax(0,.84fr) minmax(320px,1.16fr); gap: 38px; align-items: end; }
+    .kicker { color: var(--wood); font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; font-size: 11px; font-weight: 900; letter-spacing: .13em; text-transform: uppercase; }
+    .section-dark .kicker { color: #f3bb54; }
+    .section h2 { margin: 12px 0 0; max-width: 11em; font-family: ui-serif, "Songti TC", "Noto Serif TC", serif; font-size: clamp(34px,4.5vw,57px); font-weight: 800; line-height: 1.16; letter-spacing: -.045em; text-wrap: balance; }
+    .section-intro { margin: 0; color: var(--muted); font-size: clamp(16px,1.5vw,19px); line-height: 1.9; text-wrap: pretty; }
+    .section-dark .section-intro { color: rgba(255,255,255,.68); }
+
+    .why-layout { display: grid; grid-template-columns: minmax(0,.94fr) minmax(340px,1.06fr); gap: clamp(34px,6vw,76px); align-items: center; margin-top: 54px; }
+    .quote-panel { position: relative; min-height: 420px; display: flex; flex-direction: column; justify-content: space-between; padding: clamp(30px,4vw,50px); color: #fff; background: var(--wood); overflow: hidden; }
+    .quote-panel::after { content: "珠"; position: absolute; right: -18px; bottom: -66px; color: rgba(255,255,255,.08); font-family: ui-serif, "Songti TC", serif; font-size: 230px; font-weight: 800; line-height: 1; }
+    .quote-panel blockquote { position: relative; z-index: 1; margin: 0; font-family: ui-serif, "Songti TC", serif; font-size: clamp(28px,3.4vw,44px); font-weight: 800; line-height: 1.42; }
+    .quote-panel p { position: relative; z-index: 1; margin: 34px 0 0; color: rgba(255,255,255,.72); }
+    .why-copy { display: grid; gap: 24px; }
+    .why-copy article { display: grid; grid-template-columns: 46px 1fr; gap: 18px; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
+    .why-copy article:last-child { padding-bottom: 0; border-bottom: 0; }
+    .why-copy .mark { display: grid; place-items: center; width: 42px; height: 42px; color: var(--ink); background: var(--amber-pale); border-radius: 50%; font-weight: 950; }
+    .why-copy h3 { margin: 0; font-size: 21px; }
+    .why-copy p { margin: 7px 0 0; color: var(--muted); }
+
+    .abilities { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top: 54px; }
+    .ability { min-height: 244px; padding: 28px; background: var(--white); border: 1px solid var(--line); }
+    .ability:nth-child(2), .ability:nth-child(5) { background: var(--amber-pale); }
+    .ability .bead { display: grid; place-items: center; width: 42px; height: 30px; color: #fff; background: var(--wood); border-radius: 50%; font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; font-size: 11px; font-weight: 900; }
+    .ability h3 { margin: 38px 0 10px; font-size: 23px; }
+    .ability p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.85; }
+
+    .journey { display: grid; grid-template-columns: minmax(280px,.72fr) minmax(0,1.28fr); gap: clamp(38px,7vw,90px); align-items: start; margin-top: 58px; }
+    .journey-photo { position: sticky; top: 108px; overflow: hidden; border: 1px solid rgba(255,255,255,.23); }
+    .journey-photo picture, .journey-photo img { width: 100%; }
+    .journey-photo img { aspect-ratio: 4/5; object-fit: cover; object-position: 50% 42%; }
+    .journey-photo figcaption { padding: 15px 18px; color: rgba(255,255,255,.68); border-top: 1px solid rgba(255,255,255,.2); font-size: 12px; }
+    .steps { display: grid; }
+    .step { position: relative; display: grid; grid-template-columns: 64px 1fr; gap: 22px; padding: 0 0 38px; }
+    .step::before { content: ""; position: absolute; left: 30px; top: 38px; bottom: 0; width: 3px; background: rgba(255,255,255,.22); }
+    .step:last-child { padding-bottom: 0; }
+    .step:last-child::before { content: none; }
+    .step-num { position: relative; z-index: 1; display: grid; place-items: center; width: 62px; height: 38px; color: var(--ink); background: var(--amber); border-radius: 50%; font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; font-size: 12px; font-weight: 950; }
+    .step h3 { margin: 0; font-size: 22px; }
+    .step p { margin: 7px 0 0; color: rgba(255,255,255,.65); }
+
+    .steady-layout { display: grid; grid-template-columns: minmax(0,1.05fr) minmax(320px,.95fr); gap: clamp(34px,6vw,74px); align-items: center; margin-top: 54px; }
+    .steady-photo { position: relative; }
+    .steady-photo picture, .steady-photo img { width: 100%; }
+    .steady-photo img { aspect-ratio: 4/3; object-fit: cover; }
+    .steady-photo::before { content: ""; position: absolute; inset: 14px -14px -14px 14px; z-index: -1; background: var(--amber); }
+    .steady-copy h3 { margin: 0; font-family: ui-serif, "Songti TC", serif; font-size: clamp(29px,3.7vw,46px); line-height: 1.3; }
+    .steady-copy > p { margin: 18px 0 0; color: var(--muted); }
+    .steady-list { display: grid; gap: 0; margin: 28px 0 0; padding: 0; list-style: none; }
+    .steady-list li { display: flex; align-items: center; min-height: 50px; padding: 10px 0; border-top: 1px solid var(--line); font-weight: 780; }
+    .steady-list li::before { content: ""; flex: 0 0 auto; width: 18px; height: 12px; margin-right: 13px; background: var(--wood); border-radius: 50%; }
+
+    .results-grid { display: grid; grid-template-columns: 1.15fr .85fr; grid-template-rows: auto auto; gap: 16px; margin-top: 54px; }
+    .result-card { position: relative; min-width: 0; overflow: hidden; background: var(--paper-deep); }
+    .result-card:first-child { grid-row: 1 / 3; }
+    .result-card picture, .result-card img { width: 100%; height: 100%; }
+    .result-card img { object-fit: cover; }
+    .result-card:first-child img { min-height: 580px; object-position: 50% 45%; }
+    .result-card:not(:first-child) img { min-height: 282px; }
+    .result-card figcaption { position: absolute; left: 16px; right: 16px; bottom: 16px; padding: 13px 15px; color: #fff; background: rgba(25,32,25,.86); border-left: 3px solid var(--amber); font-size: 13px; font-weight: 780; backdrop-filter: blur(8px); }
+    .result-note { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-top: 16px; }
+    .result-note div { min-height: 128px; padding: 20px; border: 1px solid var(--line); background: rgba(255,255,255,.55); }
+    .result-note strong { display: block; font-size: 17px; }
+    .result-note span { display: block; margin-top: 6px; color: var(--muted); font-size: 13px; }
+
+    .fit-panel { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 38px; align-items: center; padding: clamp(34px,5vw,62px); color: #fff; background: var(--wood); box-shadow: var(--shadow); }
+    .fit-panel h2 { margin: 0; max-width: 10em; }
+    .fit-panel p { margin: 17px 0 0; max-width: 42em; color: rgba(255,255,255,.74); }
+    .fit-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+    .fit-meta span { display: inline-flex; align-items: center; min-height: 34px; padding: 6px 10px; border: 1px solid rgba(255,255,255,.35); font-size: 12px; font-weight: 800; }
+    .fit-action { min-width: 250px; padding: 25px; color: var(--ink); background: var(--amber); text-align: center; font-size: 17px; font-weight: 950; }
+    .fit-action span { display: block; margin-top: 5px; font-size: 12px; font-weight: 760; opacity: .66; }
+    .outcome-disclaimer { margin: 18px 0 0; color: var(--muted); font-size: 12px; }
+
+    footer { color: rgba(255,255,255,.68); background: #111611; }
+    .footer-grid { display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center; padding-block: 34px; font-size: 13px; }
+    .footer-brand { display: flex; align-items: center; gap: 12px; color: #fff; font-weight: 820; }
+    .footer-brand img { width: 36px; height: 36px; }
+    .footer-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 18px; }
+    .footer-links a:hover { color: #fff; }
+
+    .mobile-cta { display: none; }
+    @media (max-width: 980px) {
+      .nav-wrap { min-height: 68px; padding-block: 10px; flex-wrap: nowrap; }
+      .nav { display: none; }
+      .mobile-menu { display: block; }
+      .hero-grid, .section-head, .why-layout, .steady-layout { grid-template-columns: 1fr; }
+      .hero-grid { min-height: auto; gap: 48px; padding-bottom: 0; }
+      .hero-copy { padding-bottom: 10px; }
+      .hero-photo { min-height: 560px; margin-inline: calc((100vw - min(calc(100vw - 40px), var(--max))) / -2); border-left: 0; border-top: 1px solid rgba(255,255,255,.18); }
+      .hero-photo::after { background: linear-gradient(0deg,rgba(25,32,25,.58),transparent 42%); }
+      .quick-facts { margin-top: 0; }
+      .fact-grid { grid-template-columns: repeat(2,1fr); }
+      .fact:nth-child(2) { border-right: 0; }
+      .fact:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .journey { grid-template-columns: .8fr 1.2fr; gap: 34px; }
+      .fit-panel { grid-template-columns: 1fr; }
+      .fit-action { justify-self: start; }
+    }
+    @media (max-width: 680px) {
+      .shell { width: min(calc(100% - 32px),var(--max)); }
+      .announcement span { display: none; }
+      .brand-copy small { display: none; }
+      .brand-copy strong { font-size: 14px; }
+      .hero-grid { padding-top: 48px; }
+      .win-word { font-size: 64px; }
+      .hero h1 { max-width: 8em; font-size: clamp(39px,12.5vw,52px); }
+      .hero-lead { font-size: 16px; }
+      .cta-row .btn { width: 100%; justify-content: space-between; }
+      .hero-photo { min-height: 440px; margin-inline: -16px; }
+      .hero-photo img { object-position: 49% 45%; }
+      .hero-caption { right: 16px; bottom: 16px; left: 16px; max-width: none; }
+      .fact-grid, .abilities, .journey, .results-grid, .result-note { grid-template-columns: 1fr; }
+      .fact { min-height: 98px; border-right: 0; border-bottom: 1px solid var(--line); }
+      .fact:nth-child(2) { border-right: 0; }
+      .fact:last-child { border-bottom: 0; }
+      .section { padding-block: 70px; }
+      .section h2 { font-size: 37px; }
+      .quote-panel { min-height: 360px; }
+      .ability { min-height: auto; }
+      .ability h3 { margin-top: 28px; }
+      .journey-photo { position: static; margin: 0; }
+      .journey-photo img { aspect-ratio: 4/3; }
+      .step { grid-template-columns: 54px 1fr; gap: 16px; }
+      .step::before { left: 25px; }
+      .step-num { width: 52px; height: 34px; }
+      .steady-photo::before { inset: 10px -8px -10px 8px; }
+      .results-grid { grid-template-rows: auto; }
+      .result-card:first-child { grid-row: auto; }
+      .result-card:first-child img, .result-card:not(:first-child) img { min-height: 300px; aspect-ratio: 4/3; }
+      .fit-panel { margin-inline: calc((100vw - 100%) / -2); padding-inline: 24px; }
+      .fit-action { width: 100%; min-width: 0; }
+      .footer-grid { grid-template-columns: 1fr; padding-bottom: 104px; }
+      .footer-links { justify-content: flex-start; }
+      .mobile-cta { position: fixed; right: 14px; bottom: calc(14px + env(safe-area-inset-bottom)); z-index: 1200; display: grid; place-items: center; width: 64px; height: 64px; padding: 0; color: #fff; background: var(--hot); border: 2px solid var(--white); border-radius: 50%; box-shadow: 0 12px 28px rgba(25,32,25,.3); font-size: 12px; font-weight: 950; line-height: 1.1; text-align: center; }
+      .mobile-cta:active { transform: scale(.96); }
+    }
+    @media (max-width: 360px) {
+      .shell { width: min(calc(100% - 28px),var(--max)); }
+      .brand { gap: 9px; }
+      .brand img { width: 40px; height: 40px; }
+      .brand-copy strong { font-size: 13px; }
+      .hero-photo { margin-inline: -14px; }
+      .section h2 { font-size: 34px; }
+      .why-copy article { grid-template-columns: 40px 1fr; gap: 13px; }
+      .quote-panel { overflow: hidden; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+  </style>
+  <script defer src="/assets/mobile-menu.js?v=20260810-outside-close"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "Win 珠心｜珠算與無珠心算",
+    "description": "以系統化珠算、無珠心算、分級練習與小班指導，帶孩子從實體撥珠逐步建立心算能力。",
+    "provider": {
+      "@type": "EducationalOrganization",
+      "name": "天樞文理補習班",
+      "url": "https://skybookedu.com/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳至主要內容</a>
+
+  <div class="announcement">
+    <div class="shell"><span class="hot-badge">HOT</span><strong>人氣課程</strong> Win 珠心・開放程度諮詢 <span>幼兒園至國小｜小班指導</span></div>
+  </div>
+
+  <header class="site-header">
+    <div class="shell nav-wrap">
+      <a class="brand" href="/" aria-label="返回天樞文理補習班首頁">
+        <img src="/android-chrome-192x192.png" alt="北斗七星文教 Logo">
+        <span class="brand-divider" aria-hidden="true"></span>
+        <span class="brand-copy"><small>Big Digger Educational</small><strong>天樞文理補習班</strong></span>
+      </a>
+      <nav class="nav" aria-label="主要導覽">
+        <a href="/">首頁</a>
+        <a href="/vispo/">Vispo 數學</a>
+        <a class="active" href="/win/" aria-current="page">Win 珠心 <span class="hot-badge">HOT</span></a>
+        <a href="/?page=story">品牌故事</a>
+        <a href="/?page=team">師資團隊</a>
+        <a class="contact" href="https://line.me/R/ti/p/@713tsrkw" rel="noopener">聯絡我們</a>
+      </nav>
+      <details class="mobile-menu">
+        <summary aria-label="開啟主要選單">
+          <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </summary>
+        <nav class="mobile-menu-panel" aria-label="手機版主要導覽">
+          <a href="/">首頁</a>
+          <a href="/vispo/">Vispo 數學</a>
+          <a href="/win/" aria-current="page">Win 珠心 <span class="hot-badge">HOT</span></a>
+          <a href="/?page=story">品牌故事</a>
+          <a href="/?page=team">師資團隊</a>
+          <a class="contact" href="https://line.me/R/ti/p/@713tsrkw" rel="noopener">聯絡我們</a>
+        </nav>
+      </details>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="win-hero hero">
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <div class="hero-label"><span class="hot-badge">HOT</span>人氣珠心算課程</div>
+          <div class="win-word" aria-label="Win 珠心">Win <span>珠心</span></div>
+          <h1>一盤珠，練的不只是計算</h1>
+          <p class="hero-lead"><strong>算得快，是孩子最先看見的進步；專注、細心與自信，才是能夠帶走的能力。</strong><br>從實際撥珠開始，讓抽象數字變得看得見、撥得動，也能在腦中想像。</p>
+          <div class="abacus-rule" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="https://line.me/R/ti/p/@713tsrkw" rel="noopener">詢問孩子適合的程度 <span aria-hidden="true">↗</span></a>
+            <a class="btn btn-secondary" href="#results">觀看真實學習成果 <span aria-hidden="true">↓</span></a>
+          </div>
+          <p class="hero-note">系統化珠算｜無珠心算｜分級練習｜小班指導</p>
+        </div>
+        <figure class="hero-photo">
+          <picture>
+            <source media="(max-width: 680px)" srcset="/win/assets/win-group-800.webp">
+            <img src="/win/assets/win-group-1920.webp" alt="Win 珠心學生在教室展示算盤與檢定成果" width="1920" height="1440" fetchpriority="high">
+          </picture>
+          <figcaption class="hero-caption">真實課堂・真實練習・每一次進步都看得見</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <aside class="quick-facts" aria-label="課程特色">
+      <div class="shell fact-grid">
+        <div class="fact"><small>FOUNDATION</small><strong>數字與位值</strong></div>
+        <div class="fact"><small>METHOD</small><strong>實珠到心算</strong></div>
+        <div class="fact"><small>PACE</small><strong>分級循序練習</strong></div>
+        <div class="fact"><small>CLASS</small><strong>老師小班指導</strong></div>
+      </div>
+    </aside>
+
+    <section class="section" id="why">
+      <div class="shell">
+        <div class="section-head">
+          <div><div class="kicker">Why Abacus</div><h2>計算機給答案，練習留下能力</h2></div>
+          <p class="section-intro">計算機可以快速完成運算，卻不能代替孩子親自觀察、記數、判斷與驗算。珠心算真正珍貴的地方，在於孩子一步步把數字、位值與進退位，建立成自己能掌握的計算基本功。</p>
+        </div>
+        <div class="why-layout">
+          <div class="quote-panel">
+            <blockquote>從「看得見的算珠」，走向「腦中的算盤」。</blockquote>
+            <p>孩子先用手理解，再用心完成。速度不是起點，穩定才是。</p>
+          </div>
+          <div class="why-copy">
+            <article><div class="mark">聽</div><div><h3>仔細接收題目</h3><p>在聽題與看題中抓住數字變化，知道下一步要處理什麼。</p></div></article>
+            <article><div class="mark">想</div><div><h3>在腦中保留珠像</h3><p>把抽象的數轉換為算盤位置，逐步建立無珠心算的表徵。</p></div></article>
+            <article><div class="mark">驗</div><div><h3>完成後回頭確認</h3><p>從追求答案，進一步養成檢查、修正與對自己負責的習慣。</p></div></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-white" id="abilities">
+      <div class="shell">
+        <div class="section-head">
+          <div><div class="kicker">Six Abilities</div><h2>從一盤算珠，累積六種學習能力</h2></div>
+          <p class="section-intro">每一項能力都不是一句口號，而是藏在課堂的具體動作裡：看題、聽題、撥珠、記像、心算、驗算。老師會依孩子的起點與熟練度，安排剛剛好的挑戰。</p>
+        </div>
+        <div class="abilities">
+          <article class="ability"><span class="bead">01</span><h3>計算力</h3><p>熟悉數字、位值與進退位，循序建立加、減、乘、除的速度與準確度。</p></article>
+          <article class="ability"><span class="bead">02</span><h3>專注力</h3><p>仔細聽題、看題並跟上連續變化，練習在一段時間裡穩定投入。</p></article>
+          <article class="ability"><span class="bead">03</span><h3>記憶力</h3><p>從記住數字，到保留算珠的位置與移動，練習心算需要的工作記憶。</p></article>
+          <article class="ability"><span class="bead">04</span><h3>反應力</h3><p>面對連續出現的數字，快速判斷該如何撥珠或調整腦中的珠像。</p></article>
+          <article class="ability"><span class="bead">05</span><h3>圖像力</h3><p>把抽象數字轉換成可操作的空間圖像，從實體算盤逐步進入無珠心算。</p></article>
+          <article class="ability"><span class="bead">06</span><h3>自信心</h3><p>當孩子能獨立完成原本覺得困難的計算，成就感會累積成願意挑戰的勇氣。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark" id="journey">
+      <div class="shell">
+        <div class="section-head">
+          <div><div class="kicker">Learning Journey</div><h2>從「手上有珠」到「心中有珠」</h2></div>
+          <p class="section-intro">學習有明確的前後順序。每一階段穩定後，再增加運算難度與速度，讓孩子知道自己正在學什麼，也知道下一步往哪裡走。</p>
+        </div>
+        <div class="journey">
+          <figure class="journey-photo">
+            <picture>
+              <source media="(max-width: 680px)" srcset="/win/assets/win-focus-pair-720.webp">
+              <img src="/win/assets/win-focus-pair-1440.webp" alt="兩位學生一邊使用算盤一邊完成分級練習" width="1440" height="1080" loading="lazy">
+            </picture>
+            <figcaption>實珠操作與紙本練習同步，讓每個步驟都能被老師看見。</figcaption>
+          </figure>
+          <div class="steps">
+            <article class="step"><div class="step-num">01</div><div><h3>認珠與撥珠</h3><p>認識算盤、數字與位值，學習正確指法和基本運珠。</p></div></article>
+            <article class="step"><div class="step-num">02</div><div><h3>加減與進退位</h3><p>透過實珠練習理解進位、退位，建立穩定的加減法基礎。</p></div></article>
+            <article class="step"><div class="step-num">03</div><div><h3>看心算與聽心算</h3><p>從看題進入聽題，在腦中保留數字與算珠影像。</p></div></article>
+            <article class="step"><div class="step-num">04</div><div><h3>乘除與進階運算</h3><p>依照程度循序進入乘法、除法與更複雜的運算。</p></div></article>
+            <article class="step"><div class="step-num">05</div><div><h3>檢定與成果挑戰</h3><p>用階段性測驗看見學習成果，也讓孩子有清楚可達成的目標。</p></div></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="steady">
+      <div class="shell">
+        <div class="section-head">
+          <div><div class="kicker">Accuracy Before Speed</div><h2>我們不只要求快，更在意是否真正穩</h2></div>
+          <p class="section-intro">速度必須建立在正確之上。老師會看指法、計算方式、錯誤類型與熟練程度；基礎穩定後，才逐步增加題目長度與節奏。</p>
+        </div>
+        <div class="steady-layout">
+          <figure class="steady-photo">
+            <picture>
+              <source media="(max-width: 680px)" srcset="/win/assets/win-practice-pair-720.webp">
+              <img src="/win/assets/win-practice-pair-1440.webp" alt="學生在老師安排的練習中使用算盤與題本" width="1440" height="1080" loading="lazy">
+            </picture>
+          </figure>
+          <div class="steady-copy">
+            <h3>先把每一步做對，速度自然會跟上。</h3>
+            <p>孩子不需要和別人追同一個速度；老師會依目前程度設定下一個合理目標，讓進步可被觀察，也可被累積。</p>
+            <ul class="steady-list">
+              <li>循序漸進的分級教材</li>
+              <li>依程度安排學習進度</li>
+              <li>老師現場觀察與個別修正</li>
+              <li>珠算與心算同步訓練</li>
+              <li>階段性學習成果檢核</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-white" id="results">
+      <div class="shell">
+        <div class="section-head">
+          <div><div class="kicker">Real Progress</div><h2>孩子的進步，應該被看見</h2></div>
+          <p class="section-intro">比起只寫課程特色，我們更願意讓家長看到真實的學習現場：孩子怎麼撥珠、怎麼完成練習，以及達成階段目標時的成就感。</p>
+        </div>
+        <div class="results-grid">
+          <figure class="result-card">
+            <picture>
+              <source media="(max-width: 680px)" srcset="/win/assets/win-celebration-720.webp">
+              <img src="/win/assets/win-celebration-1440.webp" alt="學生開心展示算盤與學習成果" width="1440" height="1080" loading="lazy">
+            </picture>
+            <figcaption>完成階段目標後，孩子能清楚看見自己的累積。</figcaption>
+          </figure>
+          <figure class="result-card">
+            <picture>
+              <source media="(max-width: 680px)" srcset="/win/assets/win-practice-720.webp">
+              <img src="/win/assets/win-practice-1440.webp" alt="學生專注完成珠心算紙本練習" width="1440" height="1080" loading="lazy">
+            </picture>
+            <figcaption>從每一次落筆，看見正確率與穩定度。</figcaption>
+          </figure>
+          <figure class="result-card">
+            <picture>
+              <source media="(max-width: 680px)" srcset="/win/assets/win-group-800.webp">
+              <img src="/win/assets/win-group-1920.webp" alt="Win 珠心課堂學生與檢定證書合照" width="1920" height="1440" loading="lazy">
+            </picture>
+            <figcaption>練習、檢定與成果回饋，形成清楚的學習節點。</figcaption>
+          </figure>
+        </div>
+        <div class="result-note">
+          <div><strong>課堂觀察</strong><span>老師看指法、錯誤與熟練度，不只看最後答案。</span></div>
+          <div><strong>階段比較</strong><span>用一段時間前後的練習表現，理解孩子的變化。</span></div>
+          <div><strong>成果目標</strong><span>依程度安排檢定或挑戰，建立可達成的下一步。</span></div>
+        </div>
+        <p class="outcome-disclaimer">每位孩子的起始程度、出席與練習情況不同，實際進度與成果會因人而異。</p>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="shell">
+        <div class="fit-panel">
+          <div>
+            <div class="kicker" style="color:#ffd47d">Start At The Right Level</div>
+            <h2>每個孩子，都從適合自己的程度開始</h2>
+            <p>無論第一次接觸算盤，或曾經學過珠心算，老師都會先了解目前程度，再安排適合的教材與進度。</p>
+            <div class="fit-meta"><span>幼兒園至國小</span><span>新竹關埔校區</span><span>天樞短期文理補習班</span></div>
+          </div>
+          <a class="fit-action" href="https://line.me/R/ti/p/@713tsrkw" rel="noopener">詢問適合的程度 ↗<span>LINE @713tsrkw</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-grid">
+      <div class="footer-brand"><img src="/android-chrome-192x192.png" alt=""><span>Win 珠心｜珠算・無珠心算<br>關埔天樞短期文理補習班</span></div>
+      <div class="footer-links"><a href="tel:036661668">03 666 1668</a><a href="https://line.me/R/ti/p/@713tsrkw" rel="noopener">LINE @713tsrkw</a><span>新竹市長春街 140 號 1-2 樓</span></div>
+    </div>
+  </footer>
+
+  <a class="mobile-cta" href="https://line.me/R/ti/p/@713tsrkw" rel="noopener" aria-label="用 LINE 詢問 Win 珠心課程"><span>LINE<br>詢問</span></a>
+</body>
+</html>
