@@ -313,43 +313,45 @@
       *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
     }
   </style>
+  <link rel="stylesheet" href="/assets/shared-header.css?v=20260812-shared">
+  <script defer src="/assets/shared-header.js?v=20260812-shared"></script>
   <script defer src="/assets/mobile-menu.js?v=20260810-outside-close"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">跳至主要內容</a>
 
-  <header class="site-header">
-    <div class="shell nav-wrap">
-      <a class="brand" href="/" aria-label="返回天樞文理補習班首頁">
-        <img src="/android-chrome-192x192.png" alt="北斗七星文教 Logo">
-        <span class="brand-divider" aria-hidden="true"></span>
-        <span class="brand-copy"><small>Big Digger Educational</small><strong>天樞文理補習班</strong></span>
+  <header class="site-header shared-site-header">
+    <div class="shell nav-wrap shared-header-inner">
+      <a class="brand shared-brand" href="/" aria-label="返回天樞文理補習班首頁">
+        <img class="shared-brand-logo" src="/assets/brand-seal.jpg" alt="北斗七星文教 Logo">
+        <span class="brand-divider shared-brand-divider" aria-hidden="true"></span>
+        <span class="shared-brand-name">天樞文理補習班</span>
       </a>
-      <nav class="nav" aria-label="主要導覽">
-        <a href="/">首頁</a>
-        <a class="active course-link" href="/vispo/" aria-current="page">Vispo 數學 <span class="course-badge new-badge" data-course-badge="new">NEW</span></a>
-        <a class="course-link" href="/win/">Win珠心算 <span class="course-badge hot-badge">HOT</span></a>
-        <a href="/?page=story">品牌故事</a>
-        <a href="/?page=team">師資團隊</a>
-        <a class="contact" href="https://line.me/R/ti/p/@713tsrkw" rel="noopener">聯絡我們</a>
+      <nav class="nav shared-nav" aria-label="主要導覽">
+        <a class="shared-nav-item" data-header-target="home" href="/">首頁</a>
+        <a class="is-active course-link shared-nav-item" data-header-target="vispo" href="/vispo/" aria-current="page">Vispo 數學 <span class="course-badge new-badge shared-course-badge shared-new-badge" data-course-badge="new">NEW</span></a>
+        <a class="course-link shared-nav-item" data-header-target="win" href="/win/">Win珠心算 <span class="course-badge hot-badge shared-course-badge shared-hot-badge">HOT</span></a>
+        <a class="shared-nav-item" data-header-target="story" href="/?page=story">品牌故事</a>
+        <a class="shared-nav-item" data-header-target="team" href="/?page=team">師資團隊</a>
+        <a class="contact shared-nav-item" data-header-target="contact" href="https://line.me/R/ti/p/@713tsrkw" rel="noopener">聯絡我們</a>
       </nav>
-      <details class="mobile-menu">
+      <details class="mobile-menu shared-mobile-menu">
         <summary aria-label="開啟主要選單">
           <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         </summary>
-        <nav class="mobile-menu-panel" aria-label="手機版主要導覽">
-          <a href="/">首頁</a>
-          <a href="/vispo/" aria-current="page">Vispo 數學 <span class="course-badge new-badge" data-course-badge="new">NEW</span></a>
-          <a href="/win/">Win珠心算 <span class="course-badge hot-badge">HOT</span></a>
-          <a href="/?page=story">品牌故事</a>
-          <a href="/?page=team">師資團隊</a>
-          <a class="contact" href="https://line.me/R/ti/p/@713tsrkw" rel="noopener">聯絡我們</a>
+        <nav class="mobile-menu-panel shared-mobile-panel" aria-label="手機版主要導覽">
+          <a class="shared-mobile-item" data-header-target="home" href="/">首頁</a>
+          <a class="shared-mobile-item is-active" data-header-target="vispo" href="/vispo/" aria-current="page">Vispo 數學 <span class="course-badge new-badge shared-course-badge shared-new-badge" data-course-badge="new">NEW</span></a>
+          <a class="shared-mobile-item" data-header-target="win" href="/win/">Win珠心算 <span class="course-badge hot-badge shared-course-badge shared-hot-badge">HOT</span></a>
+          <a class="shared-mobile-item" data-header-target="story" href="/?page=story">品牌故事</a>
+          <a class="shared-mobile-item" data-header-target="team" href="/?page=team">師資團隊</a>
+          <a class="contact shared-mobile-item" data-header-target="contact" href="https://line.me/R/ti/p/@713tsrkw" rel="noopener">聯絡我們</a>
         </nav>
       </details>
     </div>
   </header>
 
-  <div class="announcement">
+  <div class="announcement shared-sticky-banner">
     <div class="shell"><b>NOW ENROLLING</b> 8/29 AI 數學力診斷暨體驗日 <span>國一專屬・每場限額 10 名</span></div>
   </div>
 
