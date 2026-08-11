@@ -82,6 +82,7 @@ async function main () {
     }))
     return {
       display: getComputedStyle(card).display,
+      title: card.querySelector('.om-vispo-promo-title')?.textContent.trim() || '',
       clientWidth: card.clientWidth,
       scrollWidth: card.scrollWidth,
       height: card.getBoundingClientRect().height,
@@ -102,6 +103,9 @@ async function main () {
   assertMenu('vispo', vispo)
   if (promo.display === 'missing' || promo.display === 'none') {
     throw new Error('homepage does not provide a dedicated mobile Vispo promo')
+  }
+  if (promo.title !== 'Vispo 矽谷數學實驗班') {
+    throw new Error('homepage mobile Vispo promo does not use the full Silicon Valley course name')
   }
   if (promo.scrollWidth > promo.clientWidth + 1 || promo.height > 104) {
     throw new Error('homepage mobile Vispo promo overflows or is too tall')
