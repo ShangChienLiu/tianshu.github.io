@@ -30,6 +30,7 @@
 <script defer src="/assets/dc-runtime.js?v=20260810-no-white-flash"></script>
 <script defer src="/assets/dc-bridge.js"></script>
 <script defer src="/assets/component-runtime.js"></script>
+<script defer src="/assets/shared-header.js?v=20260812-shared"></script>
 <script defer src="/assets/mobile-menu.js?v=20260810-outside-close"></script>
 </head>
 <body>
@@ -347,38 +348,39 @@ textarea.input { min-height: 90px; resize: vertical; }
     .om-fab-stack { right:14px !important; bottom:calc(14px + env(safe-area-inset-bottom)) !important; gap:10px !important; }
   }
 </style>
+<link rel="stylesheet" href="/assets/shared-header.css?v=20260812-shared">
 </helmet>
 
 
 
 <div style="min-height:100vh;display:flex;flex-direction:column;background:#FAF8F6">
 
-  <header style="position:sticky;top:0;z-index:500;background:rgba(250,248,246,0.92);backdrop-filter:blur(10px);border-bottom:2px solid #201E1D">
-    <div style="max-width:1240px;margin:0 auto;padding:14px clamp(20px,5vw,48px);display:flex;align-items:center;gap:24px;flex-wrap:wrap" class="om-head-inner">
-      <a class="om-brand" href="#top" sc-camel-on-click="{{ goHome }}" style="display:flex;align-items:center;gap:14px;color:#201E1D;flex:0 0 auto">
-        <img src="/assets/brand-seal.jpg" alt="北斗七星文教 Big Digger Educational" style="display:block;height:48px;width:48px;object-fit:contain">
-        <span style="display:block;width:2px;height:30px;background:#DAD5D1"></span>
-        <span class="om-brand-name" style="font-size:16px;font-weight:800;letter-spacing:0.02em;white-space:nowrap">天樞文理補習班</span>
+  <header class="shared-site-header">
+    <div class="om-head-inner shared-header-inner">
+      <a class="om-brand shared-brand" href="#top" sc-camel-on-click="{{ goHome }}" aria-label="返回天樞文理補習班首頁">
+        <img class="shared-brand-logo" src="/assets/brand-seal.jpg" alt="北斗七星文教 Logo">
+        <span class="shared-brand-divider" aria-hidden="true"></span>
+        <span class="om-brand-name shared-brand-name">天樞文理補習班</span>
       </a>
-      <nav class="om-nav" style="display:flex;align-items:center;gap:4px;margin-left:auto;flex-wrap:wrap">
-        <button type="button" sc-camel-on-click="{{ goHome }}" style="border:0;background:transparent;font:inherit;font-size:15px;font-weight:600;padding:10px 14px;cursor:pointer;color:#201E1D" style-hover="color:#1F2A8C">首頁</button>
-        <a class="om-vispo-nav" href="/vispo/">Vispo 數學 <span data-course-badge="new">NEW</span></a>
-        <a class="om-win-nav" href="/win/">Win珠心算 <span>HOT</span></a>
-        <button type="button" sc-camel-on-click="{{ goStory }}" style="border:0;background:transparent;font:inherit;font-size:15px;font-weight:600;padding:10px 14px;cursor:pointer;color:#201E1D" style-hover="color:#1F2A8C">品牌故事</button>
-        <button type="button" sc-camel-on-click="{{ goTeam }}" style="border:0;background:transparent;font:inherit;font-size:15px;font-weight:600;padding:10px 14px;cursor:pointer;color:#201E1D" style-hover="color:#1F2A8C">師資團隊</button>
-        <button type="button" sc-camel-on-click="{{ goContact }}" style="border:0;font:inherit;font-size:15px;font-weight:700;padding:12px 20px;margin-left:8px;cursor:pointer;color:#fff;background:#1F2A8C" style-hover="filter:brightness(1.08)">聯絡我們</button>
+      <nav class="om-nav shared-nav" aria-label="主要導覽">
+        <button class="shared-nav-item is-active" type="button" data-header-target="home" sc-camel-on-click="{{ goHome }}" aria-current="page">首頁</button>
+        <a class="om-vispo-nav shared-nav-item" data-header-target="vispo" href="/vispo/">Vispo 數學 <span class="shared-course-badge shared-new-badge" data-course-badge="new">NEW</span></a>
+        <a class="om-win-nav shared-nav-item" data-header-target="win" href="/win/">Win珠心算 <span class="shared-course-badge shared-hot-badge">HOT</span></a>
+        <button class="shared-nav-item" type="button" data-header-target="story" sc-camel-on-click="{{ goStory }}">品牌故事</button>
+        <button class="shared-nav-item" type="button" data-header-target="team" sc-camel-on-click="{{ goTeam }}">師資團隊</button>
+        <button class="shared-nav-item" type="button" data-header-target="contact" sc-camel-on-click="{{ goContact }}">聯絡我們</button>
       </nav>
-      <details class="om-mobile-menu">
+      <details class="om-mobile-menu shared-mobile-menu">
         <summary aria-label="開啟主要選單">
           <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         </summary>
-        <nav class="mobile-menu-panel" aria-label="手機版主要導覽">
-          <button type="button" sc-camel-on-click="{{ goHome }}">首頁</button>
-          <a class="mobile-vispo" href="/vispo/">Vispo 數學 <small data-course-badge="new">NEW</small></a>
-          <a class="mobile-win" href="/win/">Win珠心算 <small>HOT</small></a>
-          <button type="button" sc-camel-on-click="{{ goStory }}">品牌故事</button>
-          <button type="button" sc-camel-on-click="{{ goTeam }}">師資團隊</button>
-          <button type="button" sc-camel-on-click="{{ goContact }}">聯絡我們</button>
+        <nav class="mobile-menu-panel shared-mobile-panel" aria-label="手機版主要導覽">
+          <button class="shared-mobile-item is-active" type="button" data-header-target="home" sc-camel-on-click="{{ goHome }}" aria-current="page">首頁</button>
+          <a class="mobile-vispo shared-mobile-item" data-header-target="vispo" href="/vispo/">Vispo 數學 <small class="shared-course-badge shared-new-badge" data-course-badge="new">NEW</small></a>
+          <a class="mobile-win shared-mobile-item" data-header-target="win" href="/win/">Win珠心算 <small class="shared-course-badge shared-hot-badge">HOT</small></a>
+          <button class="shared-mobile-item" type="button" data-header-target="story" sc-camel-on-click="{{ goStory }}">品牌故事</button>
+          <button class="shared-mobile-item" type="button" data-header-target="team" sc-camel-on-click="{{ goTeam }}">師資團隊</button>
+          <button class="shared-mobile-item" type="button" data-header-target="contact" sc-camel-on-click="{{ goContact }}">聯絡我們</button>
         </nav>
       </details>
     </div>
@@ -390,7 +392,7 @@ textarea.input { min-height: 90px; resize: vertical; }
     <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
     <div>
 
-      <a class="om-vispo-promo" href="/vispo/" aria-label="前往 Vispo 矽谷數學實驗班專頁" style="display:block;color:#fff;background:#061B3F;border-bottom:2px solid #201E1D">
+      <a class="om-vispo-promo shared-sticky-banner" href="/vispo/" aria-label="前往 Vispo 矽谷數學實驗班專頁" style="display:block;color:#fff;background:#061B3F;border-bottom:2px solid #201E1D">
         <div class="om-vispo-promo-desktop" style="max-width:1240px;margin:0 auto;padding:13px clamp(20px,5vw,48px);display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap">
           <span style="display:flex;align-items:center;gap:12px;font-size:14px;font-weight:800"><b style="padding:4px 8px;color:#061B3F;background:#E1A72A;font-size:10px;letter-spacing:.1em">主打實驗班</b>Vispo 矽谷數學｜8/29 國一體驗診斷日・每場限額 10 名</span>
           <strong style="color:#F2C75A;font-size:14px;white-space:nowrap">探索 Vispo →</strong>
