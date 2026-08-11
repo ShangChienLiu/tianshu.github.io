@@ -305,11 +305,11 @@ textarea.input { min-height: 90px; resize: vertical; }
   .om-fab-label { opacity:0; transform:translateX(8px); transition:opacity .18s ease, transform .18s ease; pointer-events:none; white-space:nowrap; }
   .om-fab:hover .om-fab-label { opacity:1; transform:translateX(0); }
   .om-fab:hover .om-fab-dot { transform:translateY(-3px); }
-  .om-vispo-nav { display:inline-flex;align-items:center;gap:7px;padding:9px 12px;color:#061B3F;background:#F8E6B7;border:1px solid rgba(165,107,0,.28);font-size:14px;font-weight:850;white-space:nowrap; }
-  .om-vispo-nav span { padding:2px 5px;color:#fff;background:#1268AC;font-size:9px;line-height:1.2;letter-spacing:.08em; }
+  .om-vispo-nav { position:relative;display:inline-flex;align-items:center;padding:9px 12px;color:#061B3F;background:#F8E6B7;border:1px solid rgba(165,107,0,.28);font-size:14px;font-weight:850;white-space:nowrap; }
+  .om-vispo-nav span { position:absolute;top:-9px;right:7px;padding:2px 5px;color:#fff;background:#1268AC;font-size:9px;line-height:1.2;letter-spacing:.08em; }
   .om-vispo-nav:hover { color:#fff;background:#061B3F; }
-  .om-win-nav { display:inline-flex;align-items:center;gap:7px;padding:9px 12px;color:#192019;background:#F7E9CE;border:1px solid rgba(139,66,37,.28);font-size:14px;font-weight:850;white-space:nowrap; }
-  .om-win-nav span { padding:2px 5px;color:#fff;background:#D7462F;font-size:9px;line-height:1.2;letter-spacing:.08em; }
+  .om-win-nav { position:relative;display:inline-flex;align-items:center;padding:9px 12px;color:#192019;background:#F7E9CE;border:1px solid rgba(139,66,37,.28);font-size:14px;font-weight:850;white-space:nowrap; }
+  .om-win-nav span { position:absolute;top:-9px;right:7px;padding:2px 5px;color:#fff;background:#D7462F;font-size:9px;line-height:1.2;letter-spacing:.08em; }
   .om-win-nav:hover { color:#fff;background:#8B4225; }
   .om-mobile-menu { display:none;position:relative;margin-left:auto; }
   .om-mobile-menu > summary { display:grid;place-items:center;width:48px;height:48px;padding:0;list-style:none;color:#201E1D;background:#fff;border:1.5px solid #201E1D;cursor:pointer; }
@@ -319,12 +319,12 @@ textarea.input { min-height: 90px; resize: vertical; }
   .mobile-menu-panel button, .mobile-menu-panel > a { display:flex;align-items:center;width:100%;min-height:48px;padding:0 14px;border:0;border-bottom:1px solid #E4DFDB;background:transparent;color:#201E1D;font:inherit;font-size:15px;font-weight:750;text-align:left;cursor:pointer; }
   .mobile-menu-panel button:last-child { margin-top:8px;border-bottom:0;background:#1F2A8C;color:#fff;justify-content:center; }
   .mobile-menu-panel .mobile-vispo { justify-content:space-between;background:#FFF6DD;color:#061B3F; }
-  .mobile-menu-panel .mobile-vispo small { padding:3px 6px;background:#1268AC;color:#fff;font-size:9px;letter-spacing:.1em; }
+  .mobile-menu-panel .mobile-vispo small { position:static;padding:3px 6px;background:#1268AC;color:#fff;font-size:9px;letter-spacing:.1em; }
   .mobile-menu-panel .mobile-win { justify-content:space-between;background:#F7E9CE;color:#192019; }
-  .mobile-menu-panel .mobile-win small { padding:3px 6px;background:#D7462F;color:#fff;font-size:9px;letter-spacing:.1em; }
+  .mobile-menu-panel .mobile-win small { position:static;padding:3px 6px;background:#D7462F;color:#fff;font-size:9px;letter-spacing:.1em; }
   .om-vispo-promo-mobile { display:none; }
   @media (max-width:640px) { .om-fab-label { display:none; } }
-  @media (max-width:820px) {
+  @media (max-width:899px) {
     body { overflow-x:hidden; }
     .om-head-inner { min-height:68px;padding:10px 16px !important;gap:12px !important;flex-wrap:nowrap !important; }
     .om-brand img { height:36px !important; width:36px !important; }
@@ -362,8 +362,8 @@ textarea.input { min-height: 90px; resize: vertical; }
       </a>
       <nav class="om-nav" style="display:flex;align-items:center;gap:4px;margin-left:auto;flex-wrap:wrap">
         <button type="button" sc-camel-on-click="{{ goHome }}" style="border:0;background:transparent;font:inherit;font-size:15px;font-weight:600;padding:10px 14px;cursor:pointer;color:#201E1D" style-hover="color:#1F2A8C">首頁</button>
-        <a class="om-vispo-nav" href="/vispo/">Vispo 數學 <span>NEW</span></a>
-        <a class="om-win-nav" href="/win/">Win 珠心 <span>HOT</span></a>
+        <a class="om-vispo-nav" href="/vispo/">Vispo 數學 <span data-course-badge="new">NEW</span></a>
+        <a class="om-win-nav" href="/win/">Win珠心算 <span>HOT</span></a>
         <button type="button" sc-camel-on-click="{{ goStory }}" style="border:0;background:transparent;font:inherit;font-size:15px;font-weight:600;padding:10px 14px;cursor:pointer;color:#201E1D" style-hover="color:#1F2A8C">品牌故事</button>
         <button type="button" sc-camel-on-click="{{ goTeam }}" style="border:0;background:transparent;font:inherit;font-size:15px;font-weight:600;padding:10px 14px;cursor:pointer;color:#201E1D" style-hover="color:#1F2A8C">師資團隊</button>
         <button type="button" sc-camel-on-click="{{ goContact }}" style="border:0;font:inherit;font-size:15px;font-weight:700;padding:12px 20px;margin-left:8px;cursor:pointer;color:#fff;background:#1F2A8C" style-hover="filter:brightness(1.08)">聯絡我們</button>
@@ -374,8 +374,8 @@ textarea.input { min-height: 90px; resize: vertical; }
         </summary>
         <nav class="mobile-menu-panel" aria-label="手機版主要導覽">
           <button type="button" sc-camel-on-click="{{ goHome }}">首頁</button>
-          <a class="mobile-vispo" href="/vispo/">Vispo 數學 <small>NEW</small></a>
-          <a class="mobile-win" href="/win/">Win 珠心 <small>HOT</small></a>
+          <a class="mobile-vispo" href="/vispo/">Vispo 數學 <small data-course-badge="new">NEW</small></a>
+          <a class="mobile-win" href="/win/">Win珠心算 <small>HOT</small></a>
           <button type="button" sc-camel-on-click="{{ goStory }}">品牌故事</button>
           <button type="button" sc-camel-on-click="{{ goTeam }}">師資團隊</button>
           <button type="button" sc-camel-on-click="{{ goContact }}">聯絡我們</button>
@@ -809,8 +809,8 @@ textarea.input { min-height: 90px; resize: vertical; }
         <h3 style="margin:0 0 16px;font-size:14px;font-weight:800;letter-spacing:0.1em;color:#fff">網站導覽</h3>
         <div style="display:grid;gap:10px;justify-items:start">
           <button type="button" sc-camel-on-click="{{ goHome }}" style="border:0;background:transparent;font:inherit;font-size:15px;color:#D6D3D1;cursor:pointer;padding:0" style-hover="color:#9AA6E0">首頁</button>
-          <a href="/vispo/" style="font-size:15px;color:#F2C75A;font-weight:800">Vispo 數學</a>
-          <a href="/win/" style="font-size:15px;color:#F5B64D;font-weight:800">Win 珠心 <span style="display:inline-block;margin-left:5px;padding:1px 5px;color:#fff;background:#D7462F;font-size:9px;letter-spacing:.08em">HOT</span></a>
+          <a href="/vispo/" style="font-size:15px;color:#F2C75A;font-weight:800">Vispo 數學 <span data-course-badge="new" style="display:inline-block;margin-left:5px;padding:1px 5px;color:#fff;background:#1268AC;font-size:9px;letter-spacing:.08em">NEW</span></a>
+          <a href="/win/" style="font-size:15px;color:#F5B64D;font-weight:800">Win珠心算 <span style="display:inline-block;margin-left:5px;padding:1px 5px;color:#fff;background:#D7462F;font-size:9px;letter-spacing:.08em">HOT</span></a>
           <button type="button" sc-camel-on-click="{{ goStory }}" style="border:0;background:transparent;font:inherit;font-size:15px;color:#D6D3D1;cursor:pointer;padding:0" style-hover="color:#9AA6E0">品牌故事</button>
           <button type="button" sc-camel-on-click="{{ goTeam }}" style="border:0;background:transparent;font:inherit;font-size:15px;color:#D6D3D1;cursor:pointer;padding:0" style-hover="color:#9AA6E0">師資團隊</button>
           <button type="button" sc-camel-on-click="{{ goContact }}" style="border:0;background:transparent;font:inherit;font-size:15px;color:#D6D3D1;cursor:pointer;padding:0" style-hover="color:#9AA6E0">聯絡我們</button>
@@ -836,7 +836,7 @@ textarea.input { min-height: 90px; resize: vertical; }
       </div>
     </div>
     <div style="max-width:1240px;margin:0 auto;padding:24px clamp(20px,5vw,48px) 40px;border-top:2px solid #3A3634;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;font-size:13px;color:#A8A29E">
-      <span>© 2026 北斗七星文教｜天樞文理補習班</span>
+      <span class="site-copyright">© 2026 北斗七星文教｜天樞文理補習班</span>
       <span>AI 不應替孩子思考，而應幫助孩子學會思考。</span>
     </div>
   </footer>

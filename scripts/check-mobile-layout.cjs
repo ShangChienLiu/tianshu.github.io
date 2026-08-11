@@ -93,8 +93,6 @@ async function main () {
     const rect = element.getBoundingClientRect()
     return { width: rect.width, height: rect.height, rightGap: document.documentElement.clientWidth - rect.right }
   })
-  await browser.close()
-
   console.log(`home_mobile_menu=${JSON.stringify(home)}`)
   console.log(`home_vispo_promo=${JSON.stringify(promo)}`)
   console.log(`vispo_mobile_menu=${JSON.stringify(vispo)}`)
@@ -113,6 +111,23 @@ async function main () {
   }
   if (cta.width > 72 || cta.height > 72 || Math.abs(cta.width - cta.height) > 1 || cta.rightGap < 8 || cta.rightGap > 24) {
     throw new Error('Vispo mobile CTA is not a compact lower-right circle')
+  }
+
+  const tabletContext = await browser.newContext({ viewport: { width: 840, height: 900 } })
+  const tabletPage = await tabletContext.newPage()
+  await tabletPage.goto('http://127.0.0.1:4180/', { waitUntil: 'domcontentloaded' })
+  await tabletPage.waitForSelector('#dc-root')
+  const tabletHeader = await tabletPage.evaluate(() => ({
+    height: document.querySelector('header')?.getBoundingClientRect().height ?? -1,
+    desktopDisplay: getComputedStyle(document.querySelector('.om-nav')).display,
+    mobileDisplay: getComputedStyle(document.querySelector('.om-mobile-menu')).display,
+    scrollWidth: document.documentElement.scrollWidth,
+    viewportWidth: document.documentElement.clientWidth
+  }))
+  await tabletContext.close()
+  await browser.close()
+  if (tabletHeader.desktopDisplay !== 'none' || tabletHeader.mobileDisplay === 'none' || tabletHeader.height > 84 || tabletHeader.scrollWidth > tabletHeader.viewportWidth + 1) {
+    throw new Error('homepage tablet header wraps instead of using the compact menu')
   }
   console.log('PASS: mobile headers are compact and menus are touch-friendly')
 }
