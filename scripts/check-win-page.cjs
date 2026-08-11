@@ -70,7 +70,7 @@ async function inspectViewport (browser, width, height) {
     await page.mouse.click(8, Math.min(height - 40, 500))
     const closesOutside = await page.locator('.mobile-menu').evaluate(menu => !menu.open)
     assert(targets.every(target => target.height >= 44), `${width}px menu has a touch target under 44px`)
-    assert(targets.some(target => target.text.includes('Win 珠心') && target.text.includes('HOT')), `${width}px menu is missing Win 珠心 HOT`)
+    assert(targets.some(target => target.text.includes('Win珠心算') && target.text.includes('HOT')), `${width}px menu is missing Win珠心算 HOT`)
     assert(closesOutside, `${width}px menu does not close after outside tap`)
   }
 
@@ -111,7 +111,7 @@ async function main () {
     }
   }
 
-  console.log('PASS: Win 珠心 page reflows, images load, navigation works, and mobile controls meet target sizes')
+  console.log('PASS: Win珠心算 page reflows, images load, navigation works, and mobile controls meet target sizes')
 }
 
 main().catch(error => {

@@ -94,8 +94,10 @@
     .nav a { padding: 10px 12px; white-space: nowrap; font-size: 14px; font-weight: 720; }
     .nav a:hover { color: var(--blue); }
     .nav .active { color: var(--ink); background: var(--gold-soft); border: 1px solid rgba(165,107,0,.28); }
-    .nav .win-link { gap: 6px; }
-    .nav .win-link span, .mobile-menu-panel .win-link span { padding: 2px 5px; color: #fff; background: #d7462f; font-size: 9px; line-height: 1.2; letter-spacing: .08em; }
+    .nav .course-link { position: relative; }
+    .nav .course-badge { position: absolute; top: -8px; right: 6px; padding: 2px 5px; color: #fff; font-size: 9px; line-height: 1.2; letter-spacing: .08em; }
+    .nav .new-badge { background: var(--blue); }
+    .nav .hot-badge { background: #d7462f; }
     .nav .contact { margin-left: 6px; color: #fff; background: var(--ink); }
     .nav .contact:hover { color: #fff; background: var(--ink-2); }
     .mobile-menu { display: none; position: relative; margin-left: auto; background: transparent; border: 0; }
@@ -106,6 +108,9 @@
     .mobile-menu-panel { position: absolute; top: calc(100% + 10px); right: 0; width: min(300px,calc(100vw - 32px)); padding: 8px; background: #fff; border: 1.5px solid var(--ink); box-shadow: 0 18px 42px rgba(6,27,63,.22); }
     .mobile-menu-panel a { display: flex; align-items: center; min-height: 48px; padding: 0 14px; border-bottom: 1px solid var(--line); color: var(--ink); font-size: 15px; font-weight: 750; }
     .mobile-menu-panel a[aria-current="page"] { background: var(--gold-soft); }
+    .mobile-menu-panel .course-badge { position: static; padding: 2px 5px; color: #fff; font-size: 9px; line-height: 1.2; letter-spacing: .08em; }
+    .mobile-menu-panel .new-badge { background: var(--blue); }
+    .mobile-menu-panel .hot-badge { background: #d7462f; }
     .mobile-menu-panel .contact { justify-content: center; margin: 8px 0 0; border-bottom: 0; color: #fff; background: var(--ink); }
 
     .hero {
@@ -148,8 +153,10 @@
     .vispo-word { margin-top: 22px; font-size: clamp(58px, 9vw, 112px); font-style: italic; font-weight: 900; line-height: .88; letter-spacing: -.065em; }
     .vispo-word sup { color: var(--gold); font-size: .26em; vertical-align: top; margin-left: .08em; }
     .hero h1 { margin: 24px 0 0; max-width: 9.5em; font-size: clamp(38px, 5.4vw, 68px); line-height: 1.08; letter-spacing: -.045em; text-wrap: balance; }
+    .headline-line { display: block; white-space: nowrap; }
     .hero-lead { margin: 24px 0 0; max-width: 37em; color: rgba(255,255,255,.76); font-size: clamp(16px, 1.6vw, 20px); line-height: 1.8; text-wrap: pretty; }
     .hero-lead strong { color: #fff; }
+    .hero-lead strong + .headline-line { margin-top: 4px; }
     .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
     .btn { min-height: 56px; display: inline-flex; align-items: center; justify-content: center; gap: 12px; padding: 15px 22px; border: 1px solid transparent; font-size: 16px; font-weight: 850; transition: transform .18s ease, background .18s ease; }
     .btn:hover { transform: translateY(-2px); }
@@ -258,6 +265,7 @@
     .footer-brand img { width: 36px; height: 36px; }
     .footer-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 18px; }
     .footer-links a:hover { color: #fff; }
+    .site-copyright { padding-block: 22px 26px; border-top: 1px solid rgba(255,255,255,.14); color: rgba(255,255,255,.54); font-size: 12px; text-align: left; }
 
     .mobile-cta { display: none; }
     @media (max-width: 900px) {
@@ -280,7 +288,7 @@
       .brand-copy strong { font-size: 14px; }
       .hero-grid { gap: 46px; padding-block: 52px 68px; }
       .vispo-word { font-size: 64px; }
-      .hero h1 { font-size: 38px; }
+      .hero h1 { max-width: none; font-size: clamp(28px,8vw,32px); letter-spacing: -.055em; }
       .cta-row .btn { width: 100%; }
       .poster-card { padding: 6px; }
       .poster-card::after { right: -8px; bottom: -28px; width: 76px; height: 76px; font-size: 19px; }
@@ -294,8 +302,9 @@
       .event-details { grid-template-columns: 1fr; }
       .perspective-item { grid-template-columns: 44px 1fr; padding: 20px; }
       .perspective-item .icon { width: 42px; height: 42px; }
-      .footer-grid { grid-template-columns: 1fr; padding-bottom: 100px; }
+      .footer-grid { grid-template-columns: 1fr; padding-bottom: 34px; }
       .footer-links { justify-content: flex-start; }
+      .site-copyright { padding-bottom: 100px; }
       .mobile-cta { position: fixed; right: 14px; bottom: calc(14px + env(safe-area-inset-bottom)); left: auto; z-index: 1200; display: grid; place-items: center; width: 64px; height: 64px; padding: 0; color: var(--ink); background: var(--gold); border: 1px solid rgba(6,27,63,.3); border-radius: 50%; box-shadow: 0 10px 26px rgba(6,27,63,.28); font-size: 13px; font-weight: 950; line-height: 1.15; text-align: center; }
       .mobile-cta:active { transform: scale(.96); }
     }
@@ -322,8 +331,8 @@
       </a>
       <nav class="nav" aria-label="主要導覽">
         <a href="/">首頁</a>
-        <a class="active" href="/vispo/" aria-current="page">Vispo 數學</a>
-        <a class="win-link" href="/win/">Win 珠心 <span>HOT</span></a>
+        <a class="active course-link" href="/vispo/" aria-current="page">Vispo 數學 <span class="course-badge new-badge" data-course-badge="new">NEW</span></a>
+        <a class="course-link" href="/win/">Win珠心算 <span class="course-badge hot-badge">HOT</span></a>
         <a href="/?page=story">品牌故事</a>
         <a href="/?page=team">師資團隊</a>
         <a class="contact" href="https://line.me/R/ti/p/@713tsrkw" rel="noopener">聯絡我們</a>
@@ -334,8 +343,8 @@
         </summary>
         <nav class="mobile-menu-panel" aria-label="手機版主要導覽">
           <a href="/">首頁</a>
-          <a href="/vispo/" aria-current="page">Vispo 數學</a>
-          <a class="win-link" href="/win/">Win 珠心 <span>HOT</span></a>
+          <a href="/vispo/" aria-current="page">Vispo 數學 <span class="course-badge new-badge" data-course-badge="new">NEW</span></a>
+          <a href="/win/">Win珠心算 <span class="course-badge hot-badge">HOT</span></a>
           <a href="/?page=story">品牌故事</a>
           <a href="/?page=team">師資團隊</a>
           <a class="contact" href="https://line.me/R/ti/p/@713tsrkw" rel="noopener">聯絡我們</a>
@@ -350,8 +359,8 @@
         <div>
           <div class="eyebrow">115 學年度國一｜主打實驗班</div>
           <div class="vispo-word" aria-label="Vispo">Vispo<sup>✦</sup></div>
-          <h1>數學，不只解得出來。<br>更要說得清楚。</h1>
-          <p class="hero-lead"><strong>用數學理解世界，用思考走向未來。</strong><br>AI 蘇格拉底式引導診斷 × 真人教師即時解惑，培養孩子的理解、表達與獨立解題能力。</p>
+          <h1><span class="headline-line" data-keep-line>數學，不只解得出來。</span><span class="headline-line" data-keep-line>更要說得清楚。</span></h1>
+          <p class="hero-lead"><strong><span class="headline-line" data-keep-line>用數學理解世界，用思考走向未來。</span></strong><span class="headline-line" data-keep-line>AI 蘇格拉底式引導診斷</span><span class="headline-line" data-keep-line>× 真人教師即時解惑，</span><span class="headline-line" data-keep-line>培養孩子的理解、表達</span><span class="headline-line" data-keep-line>與獨立解題能力。</span></p>
           <div class="cta-row">
             <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSco_Bos2-FoMEIEFAEwkIOnAsqikhyFoQ6ao7CxkFLI4wKk0Q/viewform?usp=dialog" target="_blank" rel="noopener">預約 8/29 體驗診斷日 <span aria-hidden="true">↗</span></a>
             <a class="btn btn-secondary" href="#method">看實驗班怎麼學 <span aria-hidden="true">↓</span></a>
@@ -375,7 +384,7 @@
     <section class="section" id="why-vispo">
       <div class="shell">
         <div class="section-head">
-          <div><div class="kicker">Why Vispo</div><h2>從「會做題」，走向真正會思考</h2></div>
+          <div><div class="kicker">Why Vispo</div><h2><span class="headline-line" data-keep-line>從「會做題」，</span><span class="headline-line" data-keep-line>走向真正會思考</span></h2></div>
           <p class="section-intro">國中數學的關鍵，不只是更快算出答案，而是能不能看懂問題、拆解關係，並清楚說出自己的推理。Vispo 把科技放在適合的位置，也讓老師始終留在學習現場。</p>
         </div>
         <div class="principles">
@@ -389,7 +398,7 @@
     <section class="section section-dark" id="method">
       <div class="shell">
         <div class="section-head">
-          <div><div class="kicker">The Learning Loop</div><h2>理解 → 表達 → 精通</h2></div>
+          <div><div class="kicker">The Learning Loop</div><h2><span class="headline-line" data-keep-line>理解 → 表達 → 精通</span></h2></div>
           <p class="section-intro">不是把孩子交給 AI，而是讓 AI 擴大老師看見每一位學生的能力。六個步驟形成一個可追蹤、可介入、可調整的學習循環。</p>
         </div>
         <div class="method-grid">
@@ -406,7 +415,7 @@
     <section class="section section-alt">
       <div class="shell">
         <div class="section-head">
-          <div><div class="kicker">Human × AI</div><h2>科技負責看見，老師負責理解</h2></div>
+          <div><div class="kicker">Human × AI</div><h2><span class="headline-line" data-keep-line>科技負責看見，</span><span class="headline-line" data-keep-line>老師負責理解</span></h2></div>
           <p class="section-intro">好的 AI 學習不是直接給答案，而是持續追問、提供提示並留下過程；真正的教育判斷，仍由理解孩子的老師完成。</p>
         </div>
         <div class="human-ai">
@@ -419,7 +428,7 @@
     <section class="section" id="experience-day">
       <div class="shell">
         <div class="section-head">
-          <div><div class="kicker">Experience Day</div><h2>先診斷，再決定適不適合</h2></div>
+          <div><div class="kicker">Experience Day</div><h2><span class="headline-line" data-keep-line>先診斷，</span><span class="headline-line" data-keep-line>再決定適不適合</span></h2></div>
           <p class="section-intro">正式入班前先參加「AI 數學力診斷暨體驗日」。每位學生都會獲得個人化診斷摘要；體驗後將依學習需求、參與情形與班級適配度，優先邀請合適的學生加入正式班。</p>
         </div>
         <div class="event-layout">
@@ -444,7 +453,7 @@
     <section class="section section-alt">
       <div class="shell">
         <div class="section-head">
-          <div><div class="kicker">Global Perspective</div><h2>看見數學之外，更大的世界</h2></div>
+          <div><div class="kicker">Global Perspective</div><h2><span class="headline-line" data-keep-line>看見數學之外，</span><span class="headline-line" data-keep-line>更大的世界</span></h2></div>
           <p class="section-intro">實驗班規劃邀請具世界名校學習背景的學長姐，以及矽谷科技產業工程師，分享學習方法、跨域選擇與國際職涯視野。</p>
         </div>
         <div class="perspective-grid">
@@ -462,7 +471,7 @@
     <section class="section">
       <div class="shell">
         <div class="section-head">
-          <div><div class="kicker">Is This For Your Child?</div><h2>如果你期待的不只是分數</h2></div>
+          <div><div class="kicker">Is This For Your Child?</div><h2><span class="headline-line" data-keep-line>如果你期待的，</span><span class="headline-line" data-keep-line>不只是分數</span></h2></div>
           <p class="section-intro">Vispo 適合願意動腦、願意開口，也願意在錯誤裡重新理解的孩子。程度不是唯一標準，學習參與與成長意願同樣重要。</p>
         </div>
         <div class="fit-grid">
@@ -477,7 +486,7 @@
     <section class="section section-alt" id="faq">
       <div class="shell">
         <div class="section-head">
-          <div><div class="kicker">Before You Register</div><h2>家長常見問題</h2></div>
+          <div><div class="kicker">Before You Register</div><h2><span class="headline-line" data-keep-line>家長常見問題</span></h2></div>
           <p class="section-intro">報名前先把關鍵資訊說清楚。送出表單後，教室將依報名資料與名額安排後續確認。</p>
         </div>
         <div class="faq">
@@ -492,7 +501,7 @@
 
     <section class="final-cta">
       <div class="shell final-inner">
-        <div><h2>讓孩子的數學能力，從理解開始。</h2><p>8/29（六）AI 數學力診斷暨體驗日｜國一專屬｜每場限額 10 名</p></div>
+        <div><h2><span class="headline-line" data-keep-line>讓孩子的數學能力，</span><span class="headline-line" data-keep-line>從理解開始。</span></h2><p>8/29（六）AI 數學力診斷暨體驗日｜國一專屬｜每場限額 10 名</p></div>
         <a class="final-action" href="https://docs.google.com/forms/d/e/1FAIpQLSco_Bos2-FoMEIEFAEwkIOnAsqikhyFoQ6ao7CxkFLI4wKk0Q/viewform?usp=dialog" target="_blank" rel="noopener">立即預約報名 ↗<span>填寫約 3 分鐘</span></a>
       </div>
     </section>
@@ -503,6 +512,7 @@
       <div class="footer-brand"><img src="/android-chrome-192x192.png" alt=""><span>Vispo 矽谷數學實驗班<br>關埔天樞短期文理補習班</span></div>
       <div class="footer-links"><a href="tel:036661668">03 666 1668</a><a href="https://line.me/R/ti/p/@713tsrkw" rel="noopener">LINE @713tsrkw</a><span>新竹市長春街 140 號 1-2 樓</span></div>
     </div>
+    <div class="shell site-copyright">© 2026 北斗七星文教｜天樞文理補習班</div>
   </footer>
 
   <a class="mobile-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSco_Bos2-FoMEIEFAEwkIOnAsqikhyFoQ6ao7CxkFLI4wKk0Q/viewform?usp=dialog" target="_blank" rel="noopener" aria-label="立即報名 8/29 體驗診斷日"><span>立即<br>報名</span></a>
