@@ -95,10 +95,12 @@ async function main () {
 
   for (const result of results) {
     const { state } = result
+    const courseImages = state.images.filter(image => image.src.includes('/win/assets/'))
     console.log(`win_${result.width}=${JSON.stringify(state)}`)
     assert(state.scrollWidth <= state.viewportWidth + 1, `${result.width}px page overflows horizontally`)
     assert(state.heroWidth > 0 && state.title.includes('一盤珠'), `${result.width}px hero is missing`)
     assert(state.images.every(image => image.naturalWidth > 0 && image.naturalHeight > 0), `${result.width}px has a broken image`)
+    assert(courseImages.length === 6 && courseImages.every(image => image.src.includes('/win/assets/win-20260812-')), `${result.width}px does not use the complete replacement photo set`)
     assert(result.errors.length === 0, `${result.width}px console errors: ${result.errors.join(' | ')}`)
 
     if (result.width <= 900) {
