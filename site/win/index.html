@@ -202,6 +202,13 @@
     .result-card:first-child img { min-height: 580px; object-position: 50% 45%; }
     .result-card:not(:first-child) img { min-height: 282px; }
     .result-card figcaption { position: absolute; left: 16px; right: 16px; bottom: 16px; padding: 13px 15px; color: #fff; background: rgba(25,32,25,.86); border-left: 3px solid var(--amber); font-size: 13px; font-weight: 780; backdrop-filter: blur(8px); }
+    .achievement-card { display: grid; grid-template-columns: minmax(280px,.78fr) minmax(0,1.22fr); margin-top: 16px; color: #fff; background: var(--ink); }
+    .achievement-card picture, .achievement-card img { width: 100%; height: 100%; }
+    .achievement-card img { min-height: 520px; object-fit: cover; object-position: 50% 50%; }
+    .achievement-copy { display: flex; flex-direction: column; justify-content: center; padding: clamp(30px,5vw,64px); }
+    .achievement-copy small { color: var(--amber); font-size: 11px; font-weight: 900; letter-spacing: .14em; }
+    .achievement-copy h3 { margin: 14px 0 0; font-family: ui-serif, "Songti TC", "Noto Serif TC", serif; font-size: clamp(30px,4vw,48px); line-height: 1.24; }
+    .achievement-copy p { margin: 18px 0 0; max-width: 31em; color: rgba(255,255,255,.72); line-height: 1.9; }
     .result-note { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-top: 16px; }
     .result-note div { min-height: 128px; padding: 20px; border: 1px solid var(--line); background: rgba(255,255,255,.55); }
     .result-note strong { display: block; font-size: 17px; }
@@ -273,6 +280,9 @@
       .results-grid { grid-template-rows: auto; }
       .result-card:first-child { grid-row: auto; }
       .result-card:first-child img, .result-card:not(:first-child) img { min-height: 300px; aspect-ratio: 4/3; }
+      .achievement-card { grid-template-columns: 1fr; }
+      .achievement-card img { min-height: 0; height: auto; object-fit: contain; }
+      .achievement-copy { padding: 28px 22px; }
       .fit-panel { margin-inline: calc((100vw - 100%) / -2); padding-inline: 24px; }
       .fit-action { width: 100%; min-width: 0; }
       .footer-grid { grid-template-columns: 1fr; padding-bottom: 34px; }
@@ -504,6 +514,17 @@
             <figcaption>練習、檢定與成果回饋，形成清楚的學習節點。</figcaption>
           </figure>
         </div>
+        <article class="achievement-card">
+          <picture>
+            <source media="(max-width: 680px)" srcset="/win/assets/win-20260812-achievement-720.webp">
+            <img src="/win/assets/win-20260812-achievement.webp" alt="Win珠心算學生展示國際珠心算與全國數學級證書" width="1108" height="1477" loading="lazy">
+          </picture>
+          <div class="achievement-copy">
+            <small>LEARNING ACHIEVEMENT</small>
+            <h3>一張張證書，記錄孩子持續累積的成果</h3>
+            <p>從日常練習、階段檢核到完成檢定，孩子以清楚的學習節點看見自己的成長，也帶著成就感迎接下一個目標。</p>
+          </div>
+        </article>
         <div class="result-note">
           <div><strong>課堂觀察</strong><span>老師觀察指法、熟練度與思考歷程，完整理解每次作答。</span></div>
           <div><strong>階段比較</strong><span>用一段時間前後的練習表現，理解孩子的變化。</span></div>
