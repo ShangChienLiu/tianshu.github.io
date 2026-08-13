@@ -25,13 +25,13 @@
 <meta name="twitter:image" content="https://skybookedu.com/android-chrome-512x512.png">
 <meta name="twitter:image:alt" content="天樞文理補習班｜北斗七星文教 Logo">
 
-<link rel="preload" as="image" href="/assets/classroom.webp" type="image/webp" fetchpriority="high">
 <style id="initial-view">x-dc{display:contents}sc-if[hint-placeholder-val="{{ false }}"]{display:none}</style>
 <script defer src="/assets/dc-runtime.js?v=20260810-no-white-flash"></script>
 <script defer src="/assets/dc-bridge.js"></script>
 <script defer src="/assets/component-runtime.js"></script>
 <script defer src="/assets/shared-header.js?v=20260812-shared"></script>
 <script defer src="/assets/mobile-menu.js?v=20260810-outside-close"></script>
+<script defer src="/assets/math-ai-demo.js?v=20260813-socratic"></script>
 </head>
 <body>
 <x-dc>
@@ -324,6 +324,57 @@ textarea.input { min-height: 90px; resize: vertical; }
   .mobile-menu-panel .mobile-win { justify-content:space-between;background:#F7E9CE;color:#192019; }
   .mobile-menu-panel .mobile-win small { position:static;padding:3px 6px;background:#D7462F;color:#fff;font-size:9px;letter-spacing:.1em; }
   .om-vispo-promo-mobile { display:none; }
+  .math-ai-demo { position:relative;min-width:0;overflow:hidden;border:2px solid #201E1D;background:#F7F8FC;box-shadow:12px 12px 0 rgba(31,42,140,.11); }
+  .math-ai-demo__bar { min-height:46px;display:flex;align-items:center;gap:10px;padding:10px 14px;color:#fff;background:#071D49;border-bottom:2px solid #201E1D; }
+  .math-ai-demo__brand { display:flex;align-items:center;gap:8px;font-size:12px;font-weight:850;letter-spacing:.04em;white-space:nowrap; }
+  .math-ai-demo__brand-mark { display:grid;place-items:center;width:23px;height:23px;border:1px solid rgba(255,255,255,.55);border-radius:50%;color:#071D49;background:#F2C75A;font-size:12px;font-weight:950; }
+  .math-ai-demo__topic { margin-left:auto;color:#C9D7F2;font-size:10px;font-weight:750;letter-spacing:.08em;white-space:nowrap; }
+  .math-ai-demo__replay { width:31px;height:31px;display:grid;place-items:center;padding:0;border:1px solid rgba(255,255,255,.4);border-radius:50%;color:#fff;background:transparent;cursor:pointer; }
+  .math-ai-demo__replay:hover { color:#071D49;background:#F2C75A;border-color:#F2C75A; }
+  .math-ai-demo__body { display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);min-height:410px; }
+  .math-ai-demo__work { position:relative;min-width:0;padding:18px 16px;background:#ECEFF7;border-right:1px solid #AEB6CB; }
+  .math-ai-demo__paper { position:relative;min-height:372px;padding:18px 16px 52px;overflow:hidden;background-color:#FFFEFB;background-image:linear-gradient(rgba(31,42,140,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(31,42,140,.045) 1px,transparent 1px);background-size:22px 22px;border:1px solid #BBC1D0;box-shadow:0 8px 22px rgba(7,29,73,.09); }
+  .math-ai-demo__paper::after { content:"";position:absolute;left:32px;top:0;bottom:0;width:1px;background:rgba(215,70,47,.23); }
+  .math-ai-demo__label { position:relative;z-index:1;color:#6B7080;font-size:9px;font-weight:900;letter-spacing:.14em; }
+  .math-ai-demo__question { position:relative;z-index:1;margin-top:12px;color:#171A24;font-size:14px;font-weight:800;line-height:1.55; }
+  .math-ai-demo__formula { display:block;margin-top:8px;color:#1F2A8C;font-family:"Klee","Bradley Hand","Segoe Print",cursive;font-size:26px;font-weight:750;letter-spacing:.02em;white-space:nowrap; }
+  .math-ai-demo__workline { position:relative;z-index:1;min-height:82px;margin:24px 0 0 10px;color:#222A42;font-family:"Klee","Bradley Hand","Segoe Print",cursive;font-size:25px;line-height:1.45;white-space:pre-wrap;transform:rotate(-1.2deg); }
+  .math-ai-demo__workline::after { content:"";display:inline-block;width:2px;height:1em;margin-left:3px;vertical-align:-.1em;background:#1F2A8C;animation:math-caret .75s steps(1,end) infinite; }
+  .math-ai-demo__workline[data-idle="true"]::after { opacity:0;animation:none; }
+  .math-ai-demo__send-state { position:absolute;z-index:2;left:27px;right:27px;bottom:18px;display:flex;align-items:center;gap:8px;min-height:30px;padding:6px 10px;color:#5D6475;background:rgba(255,255,255,.92);border:1px solid #C9CEDA;font-size:10px;font-weight:800;letter-spacing:.04em; }
+  .math-ai-demo__send-dot { width:8px;height:8px;flex:none;border-radius:50%;background:#98A0B3; }
+  .math-ai-demo__send-state.is-sending .math-ai-demo__send-dot { background:#F2B328;box-shadow:0 0 0 5px rgba(242,179,40,.15); }
+  .math-ai-demo__send-state.is-sent .math-ai-demo__send-dot { background:#1F2A8C; }
+  .math-ai-demo__route { position:absolute;z-index:5;left:calc(45% - 16px);top:104px;width:32px;height:32px;display:grid;place-items:center;border:1px solid #1F2A8C;border-radius:50%;color:#fff;background:#1F2A8C;box-shadow:0 0 0 7px rgba(247,248,252,.92);font-size:14px; }
+  .math-ai-demo__route.is-moving { animation:math-route-pulse .8s ease; }
+  .math-ai-demo__chat { position:relative;min-width:0;display:flex;flex-direction:column;background:#F8F9FC; }
+  .math-ai-demo__chat-head { display:flex;align-items:center;gap:9px;min-height:48px;padding:10px 13px;border-bottom:1px solid #D4D8E2;background:#fff; }
+  .math-ai-demo__avatar { width:28px;height:28px;display:grid;place-items:center;flex:none;border-radius:50%;color:#071D49;background:#F2C75A;font-size:12px;font-weight:950; }
+  .math-ai-demo__chat-title { min-width:0; }
+  .math-ai-demo__chat-title strong { display:block;color:#171A24;font-size:11px;line-height:1.2; }
+  .math-ai-demo__chat-title span { display:flex;align-items:center;gap:5px;margin-top:3px;color:#777D8E;font-size:8px;font-weight:700;white-space:nowrap; }
+  .math-ai-demo__online { width:5px;height:5px;border-radius:50%;background:#19A86B; }
+  .math-ai-demo__progress { margin-left:auto;display:flex;gap:4px; }
+  .math-ai-demo__progress span { width:17px;height:3px;background:#D8DCE6; }
+  .math-ai-demo__progress span.is-active { background:#1F2A8C; }
+  .math-ai-demo__messages { height:312px;overflow:auto;padding:12px 11px 20px;scrollbar-width:none;overscroll-behavior:contain; }
+  .math-ai-demo__messages::-webkit-scrollbar { display:none; }
+  .math-ai-demo__message { max-width:91%;margin:0 0 9px;opacity:0;transform:translateY(7px);animation:math-message-in .24s ease forwards; }
+  .math-ai-demo__message--student { margin-left:auto; }
+  .math-ai-demo__speaker { display:block;margin:0 2px 4px;color:#7A8090;font-size:8px;font-weight:850;letter-spacing:.08em; }
+  .math-ai-demo__message--student .math-ai-demo__speaker { text-align:right; }
+  .math-ai-demo__bubble { padding:9px 10px;color:#222738;background:#fff;border:1px solid #D8DCE6;border-radius:4px 14px 14px 14px;font-size:10.5px;font-weight:650;line-height:1.65;box-shadow:0 3px 10px rgba(7,29,73,.045); }
+  .math-ai-demo__message--student .math-ai-demo__bubble { color:#fff;background:#1F2A8C;border-color:#1F2A8C;border-radius:14px 4px 14px 14px; }
+  .math-ai-demo__typing::after { content:"";display:inline-block;width:1.5px;height:1em;margin-left:2px;vertical-align:-.1em;background:currentColor;animation:math-caret .7s steps(1,end) infinite; }
+  .math-ai-demo__composer { position:absolute;left:10px;right:10px;bottom:9px;display:flex;align-items:center;gap:7px;height:34px;padding:0 8px;color:#8A90A0;background:rgba(255,255,255,.96);border:1px solid #D0D5E0;box-shadow:0 -6px 15px rgba(248,249,252,.95);font-size:9px;font-weight:700; }
+  .math-ai-demo__composer svg { color:#1F2A8C;flex:none; }
+  .math-ai-demo__caption { display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;background:#fff;border-top:2px solid #201E1D; }
+  .math-ai-demo__caption strong { color:#171A24;font-size:11px; }
+  .math-ai-demo__caption span { color:#6D7280;font-size:9px;font-weight:700;letter-spacing:.04em;text-align:right; }
+  .math-ai-demo__transcript { position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0; }
+  @keyframes math-caret { 0%,46% { opacity:1 } 47%,100% { opacity:0 } }
+  @keyframes math-message-in { to { opacity:1;transform:translateY(0) } }
+  @keyframes math-route-pulse { 0% { transform:scale(.82);box-shadow:0 0 0 3px rgba(242,199,90,.2) } 55% { transform:scale(1.08);box-shadow:0 0 0 12px rgba(242,199,90,.24) } 100% { transform:scale(1);box-shadow:0 0 0 7px rgba(247,248,252,.92) } }
   @media (max-width:640px) { .om-fab-label { display:none; } }
   @media (max-width:899px) {
     body { overflow-x:hidden; }
@@ -345,10 +396,30 @@ textarea.input { min-height: 90px; resize: vertical; }
     .om-hero-h1 { font-size:31px !important; letter-spacing:-0.01em !important; }
     .om-cta-row { gap:10px !important; margin-top:28px !important; }
     .om-cta-row > a, .om-cta-row > button { flex:1 1 100% !important; justify-content:space-between !important; padding:15px 20px !important; font-size:16px !important; }
-    .om-fab-stack { right:14px !important; bottom:calc(14px + env(safe-area-inset-bottom)) !important; gap:10px !important; }
+    .om-fab-stack { right:14px !important; bottom:calc(14px + env(safe-area-inset-bottom)) !important; gap:10px !important;transition:opacity .18s ease,transform .18s ease; }
+    body.math-demo-in-view .om-fab-stack { opacity:0;pointer-events:none;transform:translateY(14px); }
+    .math-ai-demo { box-shadow:7px 7px 0 rgba(31,42,140,.1); }
+    .math-ai-demo__bar { padding:9px 11px; }
+    .math-ai-demo__topic { display:none; }
+    .math-ai-demo__body { grid-template-columns:1fr;min-height:0; }
+    .math-ai-demo__work { padding:12px;border-right:0;border-bottom:1px solid #AEB6CB; }
+    .math-ai-demo__paper { min-height:218px;padding:14px 15px 44px; }
+    .math-ai-demo__question { margin-top:8px;font-size:13px; }
+    .math-ai-demo__formula { margin-top:4px;font-size:23px; }
+    .math-ai-demo__workline { min-height:49px;margin-top:10px;font-size:22px; }
+    .math-ai-demo__send-state { left:23px;right:23px;bottom:14px; }
+    .math-ai-demo__route { left:calc(50% - 15px);top:254px;width:30px;height:30px;transform:rotate(90deg); }
+    .math-ai-demo__route.is-moving { animation:math-route-pulse-mobile .8s ease; }
+    .math-ai-demo__messages { height:292px; }
+    .math-ai-demo__caption { align-items:flex-start;flex-direction:column;gap:3px; }
+    .math-ai-demo__caption span { text-align:left; }
   }
   @media (max-width:360px) {
     .om-vispo-promo-title { font-size:14px;letter-spacing:-.02em; }
+  }
+  @keyframes math-route-pulse-mobile { 0% { transform:rotate(90deg) scale(.82);box-shadow:0 0 0 3px rgba(242,199,90,.2) } 55% { transform:rotate(90deg) scale(1.08);box-shadow:0 0 0 12px rgba(242,199,90,.24) } 100% { transform:rotate(90deg) scale(1);box-shadow:0 0 0 7px rgba(247,248,252,.92) } }
+  @media (prefers-reduced-motion:reduce) {
+    .math-ai-demo *, .math-ai-demo *::after { scroll-behavior:auto !important;animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important; }
   }
 </style>
 <link rel="stylesheet" href="/assets/shared-header.css?v=20260812-shared">
@@ -431,13 +502,40 @@ textarea.input { min-height: 90px; resize: vertical; }
             </div>
           </div>
 
-          <div style="border:2px solid #201E1D;background:#fff">
-            <div style="height:clamp(300px,36vw,440px)"><image-slot id="hero-photo" shape="rect" fit="cover" src="/assets/classroom.webp" placeholder="教室或上課照片"></image-slot></div>
-            <div style="border-top:2px solid #201E1D;padding:18px 22px;display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap">
-              <strong style="font-size:15px;font-weight:800">新竹市長春街 140 號 1-2 樓</strong>
-              <span style="font-size:13px;font-weight:700;color:#6B6663;letter-spacing:0.04em">小班・面對面・逐題陪讀</span>
+          <section class="math-ai-demo" data-math-ai-demo aria-label="AI 蘇格拉底數學教學互動示範">
+            <div class="math-ai-demo__bar">
+              <div class="math-ai-demo__brand"><span class="math-ai-demo__brand-mark" aria-hidden="true">北</span>AI 數學陪練</div>
+              <span class="math-ai-demo__topic">國一代數 · 一元一次方程式</span>
+              <button class="math-ai-demo__replay" type="button" data-demo-replay aria-label="重新播放教學示範" title="重新播放">
+                <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M20 7v5h-5M4.9 17a8 8 0 1 0 .2-10.2L3 9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
             </div>
-          </div>
+            <div class="math-ai-demo__body">
+              <div class="math-ai-demo__work">
+                <div class="math-ai-demo__paper">
+                  <div class="math-ai-demo__label">學生手寫草稿</div>
+                  <div class="math-ai-demo__question">解方程式，求 x：<span class="math-ai-demo__formula">2(x + 3) = 18</span></div>
+                  <div class="math-ai-demo__workline" data-demo-handwriting aria-label="學生手寫解題過程"></div>
+                  <div class="math-ai-demo__send-state" data-demo-send-state><span class="math-ai-demo__send-dot"></span><span data-demo-send-label>正在手寫解題…</span></div>
+                </div>
+              </div>
+              <div class="math-ai-demo__route" data-demo-route aria-hidden="true">→</div>
+              <div class="math-ai-demo__chat">
+                <div class="math-ai-demo__chat-head">
+                  <div class="math-ai-demo__avatar" aria-hidden="true">AI</div>
+                  <div class="math-ai-demo__chat-title"><strong>蘇格拉底數學老師</strong><span><i class="math-ai-demo__online"></i>循序提問，不直接給答案</span></div>
+                  <div class="math-ai-demo__progress" data-demo-progress aria-label="解題進度"><span class="is-active"></span><span></span><span></span></div>
+                </div>
+                <div class="math-ai-demo__messages" data-demo-messages aria-hidden="true"></div>
+                <div class="math-ai-demo__composer" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="15" height="15"><path d="M3 21l3.6-3.6M14.8 4.2a2.8 2.8 0 0 1 4 4L8.3 18.7 3 21l2.3-5.3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  學生可手寫、打字或用語音回答
+                </div>
+              </div>
+            </div>
+            <div class="math-ai-demo__caption"><strong>從孩子寫下的每一步開始教</strong><span>手寫作答 → AI 看見思路 → 提問引導 → 自己解出答案</span></div>
+            <div class="math-ai-demo__transcript" aria-live="polite" data-demo-live>學生正在解數學題。AI 會根據學生的手寫步驟，以蘇格拉底方式逐步提問。</div>
+          </section>
         </div>
       </section>
 
