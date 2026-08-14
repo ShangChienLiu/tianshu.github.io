@@ -324,6 +324,18 @@ textarea.input { min-height: 90px; resize: vertical; }
   .mobile-menu-panel .mobile-win { justify-content:space-between;background:#F7E9CE;color:#192019; }
   .mobile-menu-panel .mobile-win small { position:static;padding:3px 6px;background:#D7462F;color:#fff;font-size:9px;letter-spacing:.1em; }
   .om-vispo-promo-mobile { display:none; }
+  .om-director-eyebrow { display:flex;align-items:center;gap:12px;margin-bottom:18px;color:#1F2A8C;font-size:12px;font-weight:900;letter-spacing:.14em; }
+  .om-director-eyebrow::before { content:"";width:28px;height:3px;background:#F2C75A; }
+  .om-director-card { display:grid;grid-template-columns:minmax(280px,.82fr) minmax(0,1.18fr);overflow:hidden;border:2px solid #201E1D;background:#fff; }
+  .om-director-photo { min-width:0;aspect-ratio:1/1;overflow:hidden;border-right:2px solid #201E1D;background:#E9E4DE; }
+  .om-director-photo img { display:block;width:100%;height:100%;object-fit:cover;object-position:center 30%; }
+  .om-director-copy { display:flex;flex-direction:column;justify-content:center;padding:clamp(30px,5vw,64px);color:#fff;background:#071D49; }
+  .om-director-tag { display:inline-flex;align-self:flex-start;padding:7px 11px;color:#071D49;background:#F2C75A;font-size:10px;font-weight:950;line-height:1;letter-spacing:.14em; }
+  .om-director-copy h3 { margin:18px 0 0;font-size:clamp(30px,4vw,48px);line-height:1.16;font-weight:900;letter-spacing:-.02em; }
+  .om-director-role { display:flex;flex-wrap:wrap;gap:4px 8px;margin:14px 0 0;color:#F2C75A;font-size:clamp(14px,1.5vw,17px);font-weight:850;line-height:1.7;letter-spacing:.03em; }
+  .om-director-role span { white-space:nowrap; }
+  .om-director-description { max-width:31em;margin:22px 0 0;color:rgba(255,255,255,.84);font-size:clamp(15px,1.45vw,18px);line-height:1.9;text-wrap:pretty; }
+  .om-teacher-heading { margin-top:clamp(52px,7vw,88px);padding-top:clamp(36px,5vw,56px);border-top:2px solid #201E1D; }
   .math-ai-demo { position:relative;min-width:0;overflow:hidden;border:2px solid #201E1D;background:#F7F8FC;box-shadow:12px 12px 0 rgba(31,42,140,.11); }
   .math-ai-demo__bar { min-height:46px;display:flex;align-items:center;gap:10px;padding:10px 14px;color:#fff;background:#071D49;border-bottom:2px solid #201E1D; }
   .math-ai-demo__brand { display:flex;align-items:center;gap:8px;font-size:12px;font-weight:850;letter-spacing:.04em;white-space:nowrap; }
@@ -394,6 +406,12 @@ textarea.input { min-height: 90px; resize: vertical; }
     .om-vispo-promo-meta span { display:inline-flex;align-items:center;min-height:22px;padding:2px 7px;color:#DCE8FF;border:1px solid rgba(220,232,255,.34);font-size:10px;line-height:1;font-weight:750;white-space:nowrap; }
     .om-vispo-promo-arrow { display:grid;place-items:center;width:38px;height:38px;border-radius:50%;color:#061B3F;background:#E1A72A; }
     .om-hero-h1 { font-size:31px !important; letter-spacing:-0.01em !important; }
+    .om-director-card { grid-template-columns:1fr; }
+    .om-director-photo { aspect-ratio:1/1;border-right:0;border-bottom:2px solid #201E1D; }
+    .om-director-copy { padding:28px 22px 32px; }
+    .om-director-copy h3 { font-size:30px; }
+    .om-director-role { gap:2px 6px; }
+    .om-director-description { margin-top:18px; }
     .om-cta-row { gap:10px !important; margin-top:28px !important; }
     .om-cta-row > a, .om-cta-row > button { flex:1 1 100% !important; justify-content:space-between !important; padding:15px 20px !important; font-size:16px !important; }
     .om-fab-stack { right:14px !important; bottom:calc(14px + env(safe-area-inset-bottom)) !important; gap:10px !important;transition:opacity .18s ease,transform .18s ease; }
@@ -793,8 +811,24 @@ textarea.input { min-height: 90px; resize: vertical; }
 
       <section style="border-bottom:2px solid #201E1D;background:#F3F0ED">
         <div style="max-width:1240px;margin:0 auto;padding:clamp(56px,8vw,104px) clamp(20px,5vw,48px)">
-          <h2 style="margin:0;font-size:clamp(28px,3.8vw,48px);line-height:1.22;font-weight:900;letter-spacing:-0.02em">教師群</h2>
-          <p style="margin:18px 0 0;max-width:40em;font-size:15px;line-height:1.85;color:#6B6663">從珠心算、數學到機器人與 AI，由具備實務與教學經驗的老師帶著孩子一步一步理解。</p>
+          <div data-director-card>
+            <div class="om-director-eyebrow">CAMPUS DIRECTOR · 校務主任</div>
+            <article class="om-director-card">
+              <div class="om-director-photo">
+                <img src="/assets/director-jiajia-v1.webp" alt="嘉嘉主任手繪人物肖像" width="900" height="900" loading="lazy">
+              </div>
+              <div class="om-director-copy">
+                <span class="om-director-tag">校務主任</span>
+                <h3>嘉嘉主任</h3>
+                <p class="om-director-role"><span>校務統籌 /</span><span>親師溝通 /</span><span>學生關懷</span></p>
+                <p class="om-director-description">統籌課程、師資與班務運作，以細心與耐心照顧每位孩子的學習需求。</p>
+              </div>
+            </article>
+          </div>
+          <div class="om-teacher-heading">
+            <h2 style="margin:0;font-size:clamp(28px,3.8vw,48px);line-height:1.22;font-weight:900;letter-spacing:-0.02em">教師群</h2>
+            <p style="margin:18px 0 0;max-width:40em;font-size:15px;line-height:1.85;color:#6B6663">從珠心算、數學到機器人與 AI，由具備實務與教學經驗的老師帶著孩子一步一步理解。</p>
+          </div>
           <div style="margin-top:clamp(32px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px">
             <div style="border:2px solid #201E1D;background:#fff">
               <div class="om-teacher-photo" style="aspect-ratio:1122/1402;border-bottom:2px solid #201E1D"><image-slot id="teacher-1" shape="rect" fit="cover" src="/assets/teacher-1.webp" placeholder="教師照片 1"></image-slot></div>
