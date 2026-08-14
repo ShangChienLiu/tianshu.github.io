@@ -29,6 +29,8 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v5
+      - name: Build static routes
+        run: node scripts/build-static-routes.cjs
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

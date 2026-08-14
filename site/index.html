@@ -6,6 +6,8 @@
 <meta name="theme-color" content="#1F2A8C">
 <meta name="application-name" content="天樞文理補習班">
 <meta name="apple-mobile-web-app-title" content="天樞文理補習班">
+<meta name="description" content="天樞文理補習班提供課程諮詢、學習規劃與體驗預約服務。">
+<link rel="canonical" href="https://skybookedu.com/">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -29,7 +31,7 @@
 <script defer src="/assets/dc-runtime.js?v=20260810-no-white-flash"></script>
 <script defer src="/assets/dc-bridge.js"></script>
 <script defer src="/assets/component-runtime.js"></script>
-<script defer src="/assets/shared-header.js?v=20260812-shared"></script>
+<script defer src="/assets/shared-header.js?v=20260814-contact-route"></script>
 <script defer src="/assets/mobile-menu.js?v=20260810-outside-close"></script>
 <script defer src="/assets/math-ai-demo.js?v=20260813-socratic"></script>
 </head>
@@ -318,7 +320,7 @@ textarea.input { min-height: 90px; resize: vertical; }
   .om-mobile-menu[open] > summary { color:#fff;background:#1F2A8C;border-color:#1F2A8C; }
   .mobile-menu-panel { position:absolute;top:calc(100% + 10px);right:0;width:min(300px,calc(100vw - 32px));padding:8px;background:#fff;border:1.5px solid #201E1D;box-shadow:0 18px 42px rgba(32,30,29,.2); }
   .mobile-menu-panel button, .mobile-menu-panel > a { display:flex;align-items:center;width:100%;min-height:48px;padding:0 14px;border:0;border-bottom:1px solid #E4DFDB;background:transparent;color:#201E1D;font:inherit;font-size:15px;font-weight:750;text-align:left;cursor:pointer; }
-  .mobile-menu-panel button:last-child { margin-top:8px;border-bottom:0;background:#1F2A8C;color:#fff;justify-content:center; }
+  .mobile-menu-panel > :last-child { margin-top:8px;border-bottom:0;background:#1F2A8C;color:#fff;justify-content:center; }
   .mobile-menu-panel .mobile-vispo { justify-content:space-between;background:#FFF6DD;color:#061B3F; }
   .mobile-menu-panel .mobile-vispo small { position:static;padding:3px 6px;background:#1268AC;color:#fff;font-size:9px;letter-spacing:.1em; }
   .mobile-menu-panel .mobile-win { justify-content:space-between;background:#F7E9CE;color:#192019; }
@@ -460,7 +462,7 @@ textarea.input { min-height: 90px; resize: vertical; }
         <a class="om-win-nav shared-nav-item" data-header-target="win" href="/win/">Win珠心算 <span class="shared-course-badge shared-hot-badge">HOT</span></a>
         <button class="shared-nav-item" type="button" data-header-target="story" sc-camel-on-click="{{ goStory }}">品牌故事</button>
         <button class="shared-nav-item" type="button" data-header-target="team" sc-camel-on-click="{{ goTeam }}">師資團隊</button>
-        <button class="shared-nav-item" type="button" data-header-target="contact" sc-camel-on-click="{{ goContact }}">聯絡我們</button>
+        <a class="shared-nav-item" data-header-target="contact" href="/contact/" sc-camel-on-click="{{ goContact }}">聯絡我們</a>
       </nav>
       <details class="om-mobile-menu shared-mobile-menu">
         <summary aria-label="開啟主要選單">
@@ -472,7 +474,7 @@ textarea.input { min-height: 90px; resize: vertical; }
           <a class="mobile-win shared-mobile-item" data-header-target="win" href="/win/">Win珠心算 <small class="shared-course-badge shared-hot-badge">HOT</small></a>
           <button class="shared-mobile-item" type="button" data-header-target="story" sc-camel-on-click="{{ goStory }}">品牌故事</button>
           <button class="shared-mobile-item" type="button" data-header-target="team" sc-camel-on-click="{{ goTeam }}">師資團隊</button>
-          <button class="shared-mobile-item" type="button" data-header-target="contact" sc-camel-on-click="{{ goContact }}">聯絡我們</button>
+          <a class="shared-mobile-item" data-header-target="contact" href="/contact/" sc-camel-on-click="{{ goContact }}">聯絡我們</a>
         </nav>
       </details>
     </div>
@@ -893,7 +895,7 @@ textarea.input { min-height: 90px; resize: vertical; }
       <section style="border-bottom:2px solid #201E1D">
         <div style="max-width:1240px;margin:0 auto;padding:clamp(48px,6vw,80px) clamp(20px,5vw,48px);display:grid;gap:clamp(28px,4vw,56px)">
 
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:20px;align-items:start">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:20px;align-items:start">
             <div style="border:2px solid #201E1D;background:#fff;padding:clamp(24px,3vw,34px)">
               <h2 style="margin:0 0 18px;font-size:clamp(20px,2.2vw,26px);font-weight:900">聯絡資訊</h2>
               <div style="display:grid;gap:14px;font-size:16px;line-height:1.7">
@@ -950,7 +952,7 @@ textarea.input { min-height: 90px; resize: vertical; }
           <a href="/win/" style="font-size:15px;color:#F5B64D;font-weight:800">Win珠心算 <span style="display:inline-block;margin-left:5px;padding:1px 5px;color:#fff;background:#D7462F;font-size:9px;letter-spacing:.08em">HOT</span></a>
           <button type="button" sc-camel-on-click="{{ goStory }}" style="border:0;background:transparent;font:inherit;font-size:15px;color:#D6D3D1;cursor:pointer;padding:0" style-hover="color:#9AA6E0">品牌故事</button>
           <button type="button" sc-camel-on-click="{{ goTeam }}" style="border:0;background:transparent;font:inherit;font-size:15px;color:#D6D3D1;cursor:pointer;padding:0" style-hover="color:#9AA6E0">師資團隊</button>
-          <button type="button" sc-camel-on-click="{{ goContact }}" style="border:0;background:transparent;font:inherit;font-size:15px;color:#D6D3D1;cursor:pointer;padding:0" style-hover="color:#9AA6E0">聯絡我們</button>
+          <a href="/contact/" sc-camel-on-click="{{ goContact }}" style="font-size:15px;color:#D6D3D1" style-hover="color:#9AA6E0">聯絡我們</a>
         </div>
       </div>
       <div>
@@ -1000,14 +1002,20 @@ textarea.input { min-height: 90px; resize: vertical; }
 <script type="text/x-dc" data-dc-script="" data-props="{&quot;lineUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;聯絡資料&quot;},&quot;facebookUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;聯絡資料&quot;},&quot;contactPhone&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;聯絡資料&quot;},&quot;contactEmail&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;聯絡資料&quot;},&quot;contactAddress&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;聯絡資料&quot;},&quot;contactHours&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;聯絡資料&quot;},&quot;showFloatingButtons&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;版面&quot;}}">
 class Component extends DCLogic {
   state = {
-    page: ['home', 'story', 'team', 'contact'].includes(new URLSearchParams(window.location.search).get('page'))
-      ? new URLSearchParams(window.location.search).get('page')
-      : 'home',
+    page: window.location.pathname.replace(/\/+$/, '') === '/contact'
+      ? 'contact'
+      : (['home', 'story', 'team', 'contact'].includes(new URLSearchParams(window.location.search).get('page'))
+          ? new URLSearchParams(window.location.search).get('page')
+          : 'home'),
     submitted: false
   };
 
   go(page) {
     document.querySelectorAll('.om-mobile-menu[open]').forEach(menu => menu.removeAttribute('open'));
+    const targetUrl = page === 'home' ? '/' : page === 'contact' ? '/contact/' : `/?page=${page}`;
+    if (`${window.location.pathname}${window.location.search}` !== targetUrl) {
+      window.history.pushState({ page }, '', targetUrl);
+    }
     this.setState({ page, submitted: false });
     window.scrollTo({ top: 0, behavior: 'auto' });
   }
