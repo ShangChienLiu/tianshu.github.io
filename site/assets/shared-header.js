@@ -2,6 +2,8 @@
   const targetFromLocation = () => {
     if (location.pathname.startsWith('/vispo')) return 'vispo'
     if (location.pathname.startsWith('/win')) return 'win'
+    if (location.pathname.startsWith('/story')) return 'story'
+    if (location.pathname.startsWith('/team')) return 'team'
     if (location.pathname.startsWith('/contact')) return 'contact'
     return new URLSearchParams(location.search).get('page') || 'home'
   }

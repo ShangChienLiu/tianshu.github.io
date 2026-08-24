@@ -31,7 +31,7 @@
 <script defer src="/assets/dc-runtime.js?v=20260810-no-white-flash"></script>
 <script defer src="/assets/dc-bridge.js"></script>
 <script defer src="/assets/component-runtime.js"></script>
-<script defer src="/assets/shared-header.js?v=20260814-contact-route"></script>
+<script defer src="/assets/shared-header.js?v=20260824-global-routes"></script>
 <script defer src="/assets/mobile-menu.js?v=20260810-outside-close"></script>
 <script defer src="/assets/math-ai-demo.js?v=20260813-socratic"></script>
 </head>
@@ -457,11 +457,11 @@ textarea.input { min-height: 90px; resize: vertical; }
         <span class="om-brand-name shared-brand-name">天樞文理補習班</span>
       </a>
       <nav class="om-nav shared-nav" aria-label="主要導覽">
-        <button class="shared-nav-item is-active" type="button" data-header-target="home" sc-camel-on-click="{{ goHome }}" aria-current="page">首頁</button>
+        <a class="shared-nav-item is-active" data-header-target="home" href="/" sc-camel-on-click="{{ goHome }}" aria-current="page">首頁</a>
         <a class="om-vispo-nav shared-nav-item" data-header-target="vispo" href="/vispo/">Vispo 數學 <span class="shared-course-badge shared-new-badge" data-course-badge="new">NEW</span></a>
         <a class="om-win-nav shared-nav-item" data-header-target="win" href="/win/">Win珠心算 <span class="shared-course-badge shared-hot-badge">HOT</span></a>
-        <button class="shared-nav-item" type="button" data-header-target="story" sc-camel-on-click="{{ goStory }}">品牌故事</button>
-        <button class="shared-nav-item" type="button" data-header-target="team" sc-camel-on-click="{{ goTeam }}">師資團隊</button>
+        <a class="shared-nav-item" data-header-target="story" href="/story/" sc-camel-on-click="{{ goStory }}">品牌故事</a>
+        <a class="shared-nav-item" data-header-target="team" href="/team/" sc-camel-on-click="{{ goTeam }}">師資團隊</a>
         <a class="shared-nav-item" data-header-target="contact" href="/contact/" sc-camel-on-click="{{ goContact }}">聯絡我們</a>
       </nav>
       <details class="om-mobile-menu shared-mobile-menu">
@@ -469,11 +469,11 @@ textarea.input { min-height: 90px; resize: vertical; }
           <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         </summary>
         <nav class="mobile-menu-panel shared-mobile-panel" aria-label="手機版主要導覽">
-          <button class="shared-mobile-item is-active" type="button" data-header-target="home" sc-camel-on-click="{{ goHome }}" aria-current="page">首頁</button>
+          <a class="shared-mobile-item is-active" data-header-target="home" href="/" sc-camel-on-click="{{ goHome }}" aria-current="page">首頁</a>
           <a class="mobile-vispo shared-mobile-item" data-header-target="vispo" href="/vispo/">Vispo 數學 <small class="shared-course-badge shared-new-badge" data-course-badge="new">NEW</small></a>
           <a class="mobile-win shared-mobile-item" data-header-target="win" href="/win/">Win珠心算 <small class="shared-course-badge shared-hot-badge">HOT</small></a>
-          <button class="shared-mobile-item" type="button" data-header-target="story" sc-camel-on-click="{{ goStory }}">品牌故事</button>
-          <button class="shared-mobile-item" type="button" data-header-target="team" sc-camel-on-click="{{ goTeam }}">師資團隊</button>
+          <a class="shared-mobile-item" data-header-target="story" href="/story/" sc-camel-on-click="{{ goStory }}">品牌故事</a>
+          <a class="shared-mobile-item" data-header-target="team" href="/team/" sc-camel-on-click="{{ goTeam }}">師資團隊</a>
           <a class="shared-mobile-item" data-header-target="contact" href="/contact/" sc-camel-on-click="{{ goContact }}">聯絡我們</a>
         </nav>
       </details>
@@ -947,11 +947,11 @@ textarea.input { min-height: 90px; resize: vertical; }
       <div>
         <h3 style="margin:0 0 16px;font-size:14px;font-weight:800;letter-spacing:0.1em;color:#fff">網站導覽</h3>
         <div style="display:grid;gap:10px;justify-items:start">
-          <button type="button" sc-camel-on-click="{{ goHome }}" style="border:0;background:transparent;font:inherit;font-size:15px;color:#D6D3D1;cursor:pointer;padding:0" style-hover="color:#9AA6E0">首頁</button>
+          <a href="/" sc-camel-on-click="{{ goHome }}" style="font-size:15px;color:#D6D3D1" style-hover="color:#9AA6E0">首頁</a>
           <a href="/vispo/" style="font-size:15px;color:#F2C75A;font-weight:800">Vispo 數學 <span data-course-badge="new" style="display:inline-block;margin-left:5px;padding:1px 5px;color:#fff;background:#1268AC;font-size:9px;letter-spacing:.08em">NEW</span></a>
           <a href="/win/" style="font-size:15px;color:#F5B64D;font-weight:800">Win珠心算 <span style="display:inline-block;margin-left:5px;padding:1px 5px;color:#fff;background:#D7462F;font-size:9px;letter-spacing:.08em">HOT</span></a>
-          <button type="button" sc-camel-on-click="{{ goStory }}" style="border:0;background:transparent;font:inherit;font-size:15px;color:#D6D3D1;cursor:pointer;padding:0" style-hover="color:#9AA6E0">品牌故事</button>
-          <button type="button" sc-camel-on-click="{{ goTeam }}" style="border:0;background:transparent;font:inherit;font-size:15px;color:#D6D3D1;cursor:pointer;padding:0" style-hover="color:#9AA6E0">師資團隊</button>
+          <a href="/story/" sc-camel-on-click="{{ goStory }}" style="font-size:15px;color:#D6D3D1" style-hover="color:#9AA6E0">品牌故事</a>
+          <a href="/team/" sc-camel-on-click="{{ goTeam }}" style="font-size:15px;color:#D6D3D1" style-hover="color:#9AA6E0">師資團隊</a>
           <a href="/contact/" sc-camel-on-click="{{ goContact }}" style="font-size:15px;color:#D6D3D1" style-hover="color:#9AA6E0">聯絡我們</a>
         </div>
       </div>
@@ -1001,18 +1001,35 @@ textarea.input { min-height: 90px; resize: vertical; }
 </x-dc>
 <script type="text/x-dc" data-dc-script="" data-props="{&quot;lineUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;聯絡資料&quot;},&quot;facebookUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;聯絡資料&quot;},&quot;contactPhone&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;聯絡資料&quot;},&quot;contactEmail&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;聯絡資料&quot;},&quot;contactAddress&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;聯絡資料&quot;},&quot;contactHours&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;聯絡資料&quot;},&quot;showFloatingButtons&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;版面&quot;}}">
 class Component extends DCLogic {
+  pageFromLocation() {
+    const path = window.location.pathname.replace(/\/+$/, '')
+    if (path === '/story') return 'story'
+    if (path === '/team') return 'team'
+    if (path === '/contact') return 'contact'
+    const queryPage = new URLSearchParams(window.location.search).get('page')
+    return ['home', 'story', 'team', 'contact'].includes(queryPage) ? queryPage : 'home'
+  }
+
   state = {
-    page: window.location.pathname.replace(/\/+$/, '') === '/contact'
-      ? 'contact'
-      : (['home', 'story', 'team', 'contact'].includes(new URLSearchParams(window.location.search).get('page'))
-          ? new URLSearchParams(window.location.search).get('page')
-          : 'home'),
+    page: this.pageFromLocation(),
     submitted: false
   };
 
+  componentDidMount() {
+    this.handlePopState = () => {
+      this.setState({ page: this.pageFromLocation(), submitted: false })
+      window.scrollTo({ top: 0, behavior: 'auto' })
+    }
+    addEventListener('popstate', this.handlePopState)
+  }
+
+  componentWillUnmount() {
+    removeEventListener('popstate', this.handlePopState)
+  }
+
   go(page) {
     document.querySelectorAll('.om-mobile-menu[open]').forEach(menu => menu.removeAttribute('open'));
-    const targetUrl = page === 'home' ? '/' : page === 'contact' ? '/contact/' : `/?page=${page}`;
+    const targetUrl = page === 'home' ? '/' : `/${page}/`;
     if (`${window.location.pathname}${window.location.search}` !== targetUrl) {
       window.history.pushState({ page }, '', targetUrl);
     }
@@ -1029,8 +1046,8 @@ class Component extends DCLogic {
       isContact: p === 'contact',
       submitted: this.state.submitted,
       goHome: (e) => { if (e) e.preventDefault(); this.go('home'); },
-      goStory: () => this.go('story'),
-      goTeam: () => this.go('team'),
+      goStory: (e) => { if (e) e.preventDefault(); this.go('story'); },
+      goTeam: (e) => { if (e) e.preventDefault(); this.go('team'); },
       goContact: (e) => { if (e) e.preventDefault(); this.go('contact'); },
       goBooking: (e) => {
         if (e) e.preventDefault();
