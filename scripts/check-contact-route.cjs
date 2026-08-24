@@ -29,9 +29,32 @@ async function inspectContact (browser, width) {
   return result
 }
 
+async function inspectInitialContactFrame (browser) {
+  const context = await browser.newContext({
+    viewport: { width: 1280, height: 900 },
+    javaScriptEnabled: false
+  })
+  const page = await context.newPage()
+  await page.goto('http://127.0.0.1:4180/contact/', { waitUntil: 'domcontentloaded' })
+  const result = await page.evaluate(() => ({
+    activeTargets: [...document.querySelectorAll('[aria-current="page"]')]
+      .map(item => item.dataset.headerTarget),
+    homeDisplay: getComputedStyle(document.querySelector('sc-if[value="{{ isHome }}"]')).display,
+    contactDisplay: getComputedStyle(document.querySelector('sc-if[value="{{ isContact }}"]')).display
+  }))
+  await context.close()
+  return result
+}
+
 ;(async () => {
   const browser = await chromium.launch({ executablePath, headless: true })
   try {
+    const initialFrame = await inspectInitialContactFrame(browser)
+    assert(!initialFrame.activeTargets.includes('home'), 'contact initial frame briefly selects the home tab')
+    assert(initialFrame.activeTargets.includes('contact'), 'contact initial frame does not select the contact tab')
+    assert(initialFrame.homeDisplay === 'none', 'contact initial frame briefly displays home content')
+    assert(initialFrame.contactDisplay !== 'none', 'contact initial frame hides contact content')
+
     for (const width of [320, 390, 1280]) {
       const result = await inspectContact(browser, width)
       assert(result.status === 200, `${width}px /contact/ did not return 200`)
@@ -48,9 +71,15 @@ async function inspectContact (browser, width) {
     const context = await browser.newContext({ viewport: { width: 1280, height: 844 } })
     const page = await context.newPage()
     await page.goto('http://127.0.0.1:4180/', { waitUntil: 'networkidle' })
+    let documentRequests = 0
+    page.on('request', request => {
+      if (request.isNavigationRequest() && request.frame() === page.mainFrame()) documentRequests += 1
+    })
     await page.locator('.shared-nav [data-header-target="contact"]').click()
     await page.waitForURL('**/contact/')
+    await page.waitForTimeout(300)
     assert(new URL(page.url()).pathname === '/contact/', 'homepage contact tab does not navigate to /contact/')
+    assert(documentRequests === 0, 'homepage contact click triggers an unnecessary full-page reload')
 
     for (const route of ['/vispo/', '/win/']) {
       await page.goto(`http://127.0.0.1:4180${route}`, { waitUntil: 'networkidle' })

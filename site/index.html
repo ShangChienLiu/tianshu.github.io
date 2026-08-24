@@ -1031,7 +1031,7 @@ class Component extends DCLogic {
       goHome: (e) => { if (e) e.preventDefault(); this.go('home'); },
       goStory: () => this.go('story'),
       goTeam: () => this.go('team'),
-      goContact: () => this.go('contact'),
+      goContact: (e) => { if (e) e.preventDefault(); this.go('contact'); },
       goBooking: (e) => {
         if (e) e.preventDefault();
         let attempts = 0;

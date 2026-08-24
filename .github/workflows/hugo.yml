@@ -31,6 +31,8 @@ jobs:
         uses: actions/configure-pages@v5
       - name: Build static routes
         run: node scripts/build-static-routes.cjs
+      - name: Check contact first frame
+        run: node scripts/check-contact-first-frame.cjs
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

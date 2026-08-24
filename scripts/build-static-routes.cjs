@@ -14,7 +14,31 @@ const replacements = [
   ['<link rel="canonical" href="https://skybookedu.com/">', '<link rel="canonical" href="https://skybookedu.com/contact/">'],
   ['<meta property="og:title" content="天樞文理補習班｜北斗七星文教">', '<meta property="og:title" content="聯絡我們｜天樞文理補習班">'],
   ['<meta property="og:url" content="https://skybookedu.com/">', '<meta property="og:url" content="https://skybookedu.com/contact/">'],
-  ['<meta name="twitter:title" content="天樞文理補習班｜北斗七星文教">', '<meta name="twitter:title" content="聯絡我們｜天樞文理補習班">']
+  ['<meta name="twitter:title" content="天樞文理補習班｜北斗七星文教">', '<meta name="twitter:title" content="聯絡我們｜天樞文理補習班">'],
+  [
+    '<button class="shared-nav-item is-active" type="button" data-header-target="home" sc-camel-on-click="{{ goHome }}" aria-current="page">首頁</button>',
+    '<button class="shared-nav-item" type="button" data-header-target="home" sc-camel-on-click="{{ goHome }}">首頁</button>'
+  ],
+  [
+    '<a class="shared-nav-item" data-header-target="contact" href="/contact/" sc-camel-on-click="{{ goContact }}">聯絡我們</a>',
+    '<a class="shared-nav-item is-active" data-header-target="contact" href="/contact/" sc-camel-on-click="{{ goContact }}" aria-current="page">聯絡我們</a>'
+  ],
+  [
+    '<button class="shared-mobile-item is-active" type="button" data-header-target="home" sc-camel-on-click="{{ goHome }}" aria-current="page">首頁</button>',
+    '<button class="shared-mobile-item" type="button" data-header-target="home" sc-camel-on-click="{{ goHome }}">首頁</button>'
+  ],
+  [
+    '<a class="shared-mobile-item" data-header-target="contact" href="/contact/" sc-camel-on-click="{{ goContact }}">聯絡我們</a>',
+    '<a class="shared-mobile-item is-active" data-header-target="contact" href="/contact/" sc-camel-on-click="{{ goContact }}" aria-current="page">聯絡我們</a>'
+  ],
+  [
+    '<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">',
+    '<sc-if value="{{ isHome }}" hint-placeholder-val="{{ false }}">'
+  ],
+  [
+    '<sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}">',
+    '<sc-if value="{{ isContact }}" hint-placeholder-val="{{ true }}">'
+  ]
 ]
 
 for (const [source, replacement] of replacements) {
