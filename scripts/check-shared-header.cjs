@@ -3,8 +3,8 @@
 const { chromium } = require('playwright')
 
 const executablePath = '/Users/shangchienliu/Library/Caches/ms-playwright/chromium_headless_shell-1223/chrome-headless-shell-mac-arm64/chrome-headless-shell'
-const routes = ['/', '/vispo/', '/win/']
-const expectedActive = { '/': '首頁', '/vispo/': 'Vispo 數學 NEW', '/win/': 'Win珠心算 HOT' }
+const routes = ['/', '/win/']
+const expectedActive = { '/': '首頁', '/win/': 'Win珠心算 HOT' }
 
 function assert (condition, message) {
   if (!condition) throw new Error(message)
@@ -60,16 +60,16 @@ async function inspect (browser, route, width) {
   await page.waitForTimeout(40)
   result.sticky = await page.evaluate(route => {
     const header = document.querySelector('header')
-    const banner = document.querySelector(route === '/' ? '.om-vispo-promo' : '.announcement')
+    const banner = document.querySelector('.announcement')
     const headerRect = header.getBoundingClientRect()
-    const bannerRect = banner.getBoundingClientRect()
+    const bannerRect = banner?.getBoundingClientRect()
     return {
       scrollY,
       headerPosition: getComputedStyle(header).position,
-      bannerPosition: getComputedStyle(banner).position,
+      bannerPosition: banner ? getComputedStyle(banner).position : null,
       headerTop: headerRect.top,
       headerBottom: headerRect.bottom,
-      bannerTop: bannerRect.top
+      bannerTop: bannerRect?.top
     }
   }, route)
   await context.close()
@@ -88,8 +88,8 @@ function compareGeometry (reference, candidate, route, width) {
   assert(candidate.overflow <= 1, `${route} ${width}px header causes horizontal overflow`)
   assert(candidate.sticky.scrollY > 200, `${route} ${width}px page did not scroll for the sticky check`)
   assert(candidate.sticky.headerPosition === 'sticky' && near(candidate.sticky.headerTop, 0), `${route} ${width}px header does not remain fixed at the top`)
-  assert(candidate.sticky.bannerPosition === 'sticky', `${route} ${width}px course banner is not sticky`)
-  assert(near(candidate.sticky.bannerTop, candidate.sticky.headerBottom), `${route} ${width}px sticky banner does not stay directly below the header`)
+  if (route === '/win/') assert(candidate.sticky.bannerPosition === 'sticky', `${route} ${width}px course banner is not sticky`)
+  if (route === '/win/') assert(near(candidate.sticky.bannerTop, candidate.sticky.headerBottom), `${route} ${width}px sticky banner does not stay directly below the header`)
 
   if (width >= 900) {
     assert(candidate.navDisplay === reference.navDisplay, `${route} ${width}px desktop nav visibility differs`)

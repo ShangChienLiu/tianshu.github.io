@@ -51,7 +51,12 @@ assertInitialRoute('story', ['Story'])
 assertInitialRoute('team', ['Team'])
 assertInitialRoute('contact', ['Contact'])
 
-for (const route of ['vispo', 'win']) {
+for (const route of ['home', 'story', 'team', 'contact', 'win']) {
+  assert(!/vispo|矽谷|體驗診斷日|診斷暨體驗日/i.test(readRoute(route)), `${route} still publishes the retired course`)
+}
+assert(!existsSync(join(siteRoot, 'vispo')), 'retired course page and assets must not be published')
+
+for (const route of ['win']) {
   const html = readRoute(route)
   const active = activeTargets(html)
   assert(active.length === 2 && active.every(target => target === route), `${route} initial HTML selects the wrong navigation item`)

@@ -81,7 +81,7 @@ async function inspectInitialContactFrame (browser) {
     assert(new URL(page.url()).pathname === '/contact/', 'homepage contact tab does not navigate to /contact/')
     assert(documentRequests === 0, 'homepage contact click triggers an unnecessary full-page reload')
 
-    for (const route of ['/vispo/', '/win/']) {
+    for (const route of ['/win/']) {
       await page.goto(`http://127.0.0.1:4180${route}`, { waitUntil: 'networkidle' })
       const hrefs = await page.locator('[data-header-target="contact"]').evaluateAll(items => items.map(item => item.getAttribute('href')))
       assert(hrefs.length >= 2 && hrefs.every(href => href === '/contact/'), `${route} contact navigation does not use /contact/`)

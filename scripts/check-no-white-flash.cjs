@@ -43,9 +43,9 @@ async function main () {
   await page.waitForTimeout(250)
 
   const samples = await page.evaluate(() => window.__paintSamples)
-  await page.getByRole('button', { name: '品牌故事' }).first().click()
+  await page.getByRole('link', { name: '品牌故事' }).first().click()
   await page.getByText('教育理念與核心價值').waitFor()
-  await page.getByRole('button', { name: '師資團隊' }).first().click()
+  await page.getByRole('link', { name: '師資團隊' }).first().click()
   await page.getByText('Winwin 老師').waitFor()
   await browser.close()
 

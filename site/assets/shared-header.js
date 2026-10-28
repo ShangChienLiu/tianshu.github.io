@@ -1,6 +1,5 @@
 (() => {
   const targetFromLocation = () => {
-    if (location.pathname.startsWith('/vispo')) return 'vispo'
     if (location.pathname.startsWith('/win')) return 'win'
     if (location.pathname.startsWith('/story')) return 'story'
     if (location.pathname.startsWith('/team')) return 'team'
